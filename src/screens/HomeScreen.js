@@ -4,7 +4,7 @@ import LinearGradient from 'react-native-linear-gradient'
 import LoginButton from '../components/LoginButton'
 
 export default class HomeScreen extends Component {
-
+//oi
   render() {
     return (
       <LinearGradient colors={['#D57300', '#F5276E']} useAngle={true} angle={36} angleCenter={{ x: 0.5, y: 0.5 }} style={styles.container}>
