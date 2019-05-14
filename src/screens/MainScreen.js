@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   searchContainer: {
-    backgroundColor: 'white',
+    backgroundColor: '#ffa451',
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
   categoriasContainer: {
     flex: 5,
     width: '100%',
+    
   },
   indicator: {
     width: '100%',
