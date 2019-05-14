@@ -39,9 +39,11 @@ const styles = StyleSheet.create({
     flex: 1
   },
   searchContainer: {
+    backgroundColor: '#ffa451',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    width: '100%'
   },
   storesContainer: {
     flex: 5,
