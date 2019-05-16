@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import SearchBar from '../components/SearchBar'
 import Categoria from '../components/Categoria'
 import Painel from '../components/Painel'
-import BottomBar from '../components/BottomBar'
 import Divider from '../components/Divider'
 
 
@@ -33,7 +32,6 @@ class MainScreen extends Component {
         >
           <Text style={{ textAlign: 'center' }} >{this.props.total} itens selecionados. </Text>
         </TouchableOpacity>
-        <BottomBar navigator={this.props.navigation} />
       </View>
     )
   }
