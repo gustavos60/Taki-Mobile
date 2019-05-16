@@ -4,7 +4,6 @@ import { View, StyleSheet, Image, FlatList, Text } from 'react-native'
 import { connect } from 'react-redux'
 import { toggleSelected } from '../redux/actions/itemActions'
 import { images } from '../images'
-import BottomBar from '../components/BottomBar'
 import LoginButton from '../components/LoginButton'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
@@ -61,7 +60,6 @@ class ListScreen extends Component {
             onPress={() => this.props.navigation.navigate('Map')}
           />
         </View>
-        <BottomBar navigator={this.props.navigation} />
       </View>
     )
   }
