@@ -26,7 +26,6 @@ class MapScreen extends Component {
         >
           <Text style={{ textAlign: 'center' }} >{this.props.total} itens selecionados. </Text>
         </TouchableOpacity>
-        <BottomBar navigator={this.props.navigation} />
       </View>
     )
   }
