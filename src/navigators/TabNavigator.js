@@ -4,9 +4,9 @@ import ProfileScreen from "../screens/ProfileScreen";
 import { createBottomTabNavigator, createAppContainer } from "react-navigation";
 
 const TabNavigator = createBottomTabNavigator({
-    Stores: StoresScreen, 
-    Main: MainScreen,
-    Profile: ProfileScreen
+    Lojas: StoresScreen, 
+    Carrinho: MainScreen,
+    Configurações: ProfileScreen
 });
 
 export default createAppContainer(TabNavigator);
