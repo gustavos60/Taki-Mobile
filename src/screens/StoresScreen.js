@@ -3,7 +3,6 @@ import { StyleSheet, View, Image, TouchableOpacity, Text } from 'react-native'
 import SearchBar from '../components/SearchBar'
 import Divider from '../components/Divider'
 import Painel from '../components/Painel'
-import BottomBar from '../components/BottomBar'
 
 
 export default class HomeScreen extends Component {
@@ -26,7 +25,6 @@ export default class HomeScreen extends Component {
             </TouchableOpacity>
           </Painel>
         </View>
-        <BottomBar navigator={this.props.navigation} />
       </View>
     )
   }
