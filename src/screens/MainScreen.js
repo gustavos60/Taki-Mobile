@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import SearchBar from '../components/SearchBar'
 import Categoria from '../components/Categoria'
 import Painel from '../components/Painel'
-import BottomBar from '../components/BottomBar'
 import Divider from '../components/Divider'
 
 
@@ -33,7 +32,6 @@ class MainScreen extends Component {
         >
           <Text style={{ textAlign: 'center' }} >{this.props.total} itens selecionados. </Text>
         </TouchableOpacity>
-        <BottomBar navigator={this.props.navigation} />
       </View>
     )
   }
@@ -52,7 +50,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   searchContainer: {
-    backgroundColor: 'white',
+    backgroundColor: '#ffa451',
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
@@ -61,6 +59,7 @@ const styles = StyleSheet.create({
   categoriasContainer: {
     flex: 5,
     width: '100%',
+    
   },
   indicator: {
     width: '100%',
