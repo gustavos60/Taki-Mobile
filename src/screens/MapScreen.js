@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { StyleSheet, Image, View, Text, TouchableOpacity, ScrollView } from 'react-native'
+import { StyleSheet, View, Text, TouchableOpacity, ScrollView } from 'react-native'
 import SearchBar from '../components/SearchBar'
-import BottomBar from '../components/BottomBar'
+import Map from '../components/Map'
 import { connect } from 'react-redux'
+
 
 class MapScreen extends Component {
 
@@ -69,7 +70,7 @@ class MapScreen extends Component {
   }
 
   _buttonText = () => {
-    if (this.state.corredor === 0){
+    if (this.state.corredor === 0) {
       return (
         <Text style={styles.routeText} >Traçar rota</Text>
       )
@@ -93,11 +94,11 @@ class MapScreen extends Component {
             style={styles.rota}
             onPress={() => this.setState({ corredor: 0 })}>
             {this._buttonText()}
-            {/* <Text style={styles.routeText} >Traçar rota</Text> */}
           </TouchableOpacity>
         </View>
-        {this._renderMap()}
-        {/* <Image style={styles.image} resizeMode='contain' source={require('../../assets/images/mapa.png')} /> */}
+        <View style={styles.image}>
+          <Map />
+        </View>
         <TouchableOpacity
           style={styles.indicator}
           onPress={() => this.props.navigation.navigate('List')}
@@ -130,11 +131,8 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 3,
-    margin: 15,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    overflow: 'scroll',
+    margin: 10,
+    width: '90%'
   },
   corredor: {
     backgroundColor: '#666666',
