@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, FlatList, ToastAndroid, TouchableOpacity } from 'react-native'
+import { FlatList, ToastAndroid, TouchableOpacity } from 'react-native'
 import { Dimensions } from 'react-native'
 
 export default class Linha extends Component {
@@ -18,6 +18,7 @@ export default class Linha extends Component {
         renderItem={(item) => {
 
           let text, backgroundColor
+          let corredor = false
           switch (item.item.tipo) {
             case 'entrada':
               backgroundColor = '#00FF00'
@@ -30,26 +31,22 @@ export default class Linha extends Component {
             case 'corredor':
               backgroundColor = '#E0E0E0'
               text = 'Corredor ' + item.item.id
+              corredor = true
               break;
             default:
               backgroundColor = '#000000'
               break;
           }
           return <TouchableOpacity
+            activeOpacity={0.7}
             style={{ backgroundColor, width: itemWidth }}
-            onPress={() => ToastAndroid.show(text, ToastAndroid.SHORT)}
+            onPress={() => {
+              if (corredor) this.props.atualizaCorredor(item.item.id)
+              ToastAndroid.show(text, ToastAndroid.SHORT)
+            }}
           ></TouchableOpacity>
         }}
       />
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    // height: 20,
-    borderWidth: 2,
-    borderColor: '#123456'
-  },
-})

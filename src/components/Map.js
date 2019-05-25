@@ -14,7 +14,7 @@ export default class Map extends Component {
           data={mapa}
           contentContainerStyle={{ flexGrow: 1 }}
           keyExtractor={(item, index) => '' + index}
-          renderItem={(linha) => <Linha itemHeight={itemHeight} dado={linha.item} />}
+          renderItem={(linha) => <Linha atualizaCorredor={this.props.atualizaCorredor} itemHeight={itemHeight} dado={linha.item} />}
         />
       </View >
     )
