@@ -50,7 +50,11 @@ class MapScreen extends Component {
           <TouchableOpacity
             activeOpacity={0.7}
             style={styles.rota}
-            onPress={() => this.setState({ corredor: 0 })}>
+            onPress={() => {
+                this.setState({ corredor: 0 })
+                this.props.navigation.navigate('RouteScreen')
+              }
+            }>
             {this._buttonText()}
           </TouchableOpacity>
         </View>
