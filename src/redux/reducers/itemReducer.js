@@ -122,14 +122,14 @@ const initialState = {
       selected: false
     },
     {
-      nome: 'Leite',
+      nome: 'Leite/Achoc/Cereal',
       id: 17,
       idImagem: 2,
       idCategoria: 1,
       selected: false
     },
     {
-      nome: 'Achocolatado',
+      nome: 'Doces/Bolos',
       id: 18,
       idImagem: 2,
       idCategoria: 1,
@@ -306,6 +306,125 @@ const initialState = {
     {
       nome: 'Sabonete',
       id: 43,
+      idImagem: 2,
+      idCategoria: 1,
+      selected: false
+    },
+    {
+      nome: 'Ofertas',
+      id: 44,
+      idImagem: 2,
+      idCategoria: 1,
+      selected: false
+    },
+    {
+      nome: 'aveia/neston/maizena',
+      id: 45,
+      idImagem: 2,
+      idCategoria: 1,
+      selected: false
+    },
+    {
+      nome: 'Bolacha',
+      id: 46,
+      idImagem: 2,
+      idCategoria: 1,
+      selected: false
+    },
+    {
+      nome: 'Cozinha',
+      id: 47,
+      idImagem: 2,
+      idCategoria: 1,
+      selected: false
+    },
+    {
+      nome: 'Sandalia',
+      id: 48,
+      idImagem: 2,
+      idCategoria: 1,
+      selected: false
+    },
+    {
+      nome: 'Cuscuz/Milho',
+      id: 49,
+      idImagem: 2,
+      idCategoria: 1,
+      selected: false
+    },
+    {
+      nome: 'Tinta_Cabelo',
+      id: 50,
+      idImagem: 2,
+      idCategoria: 1,
+      selected: false
+    },
+    {
+      nome: 'Margarinas/Manteigas',
+      id: 51,
+      idImagem: 2,
+      idCategoria: 1,
+      selected: false
+    },
+    {
+      nome: 'Pre_Prontos',
+      id: 52,
+      idImagem: 2,
+      idCategoria: 1,
+      selected: false
+    },
+    {
+      nome: 'arroz/farinha/acucar',
+      id: 53,
+      idImagem: 2,
+      idCategoria: 1,
+      selected: false
+    },
+    {
+      nome: 'Cafe',
+      id: 54,
+      idImagem: 2,
+      idCategoria: 1,
+      selected: false
+    },
+    {
+      nome: 'Sucos',
+      id: 55,
+      idImagem: 2,
+      idCategoria: 1,
+      selected: false
+    },
+    {
+      nome: 'Salgadinhos/Tira_gosto',
+      id: 56,
+      idImagem: 2,
+      idCategoria: 1,
+      selected: false
+    },
+    {
+      nome: 'Vinagre',
+      id: 57,
+      idImagem: 2,
+      idCategoria: 1,
+      selected: false
+    },
+    {
+      nome: 'Dieta',
+      id: 58,
+      idImagem: 2,
+      idCategoria: 1,
+      selected: false
+    },
+    {
+      nome: 'Chá',
+      id: 59,
+      idImagem: 2,
+      idCategoria: 1,
+      selected: false
+    },
+    {
+      nome: 'Veneno',
+      id: 60,
       idImagem: 2,
       idCategoria: 1,
       selected: false
