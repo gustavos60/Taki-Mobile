@@ -58,7 +58,6 @@ class Corredor extends Component {
     })
     ladoEsquerdo = this._contaUnicos(ladoEsquerdo)
     ladoDireito = this._contaUnicos(ladoDireito)
-    console.log(ladoEsquerdo)
 
     let totalEsquerda = 0
     let totalDireita = 0
