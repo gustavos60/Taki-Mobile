@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, TouchableOpacity, ScrollView } from 'react-native'
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 import SearchBar from '../components/SearchBar'
 import Map from '../components/Map'
+import Corredor from '../components/Corredor'
 import { connect } from 'react-redux'
 
 
@@ -17,54 +18,11 @@ class MapScreen extends Component {
   _renderMap = () => {
     if (this.state.corredor === 0) {
       return (
-        <View style={styles.image} >
-          <View style={styles.corredor}>
-          </View>
-          <TouchableOpacity
-            style={styles.corredorButton}
-            activeOpacity={0.6}
-            onPress={() => this.setState({ corredor: 1 })} >
-            <Text style={[styles.routeText, { fontSize: 40 }]} >01</Text>
-          </TouchableOpacity>
-          <View style={styles.corredor}>
-          </View>
-          <TouchableOpacity
-            style={styles.corredorButton}
-            activeOpacity={0.6}
-            onPress={() => this.setState({ corredor: 1 })} >
-            <Text style={[styles.routeText, { fontSize: 40 }]} >02</Text>
-          </TouchableOpacity>
-          <View style={styles.corredor}>
-          </View>
-          <TouchableOpacity
-            style={styles.corredorButton}
-            activeOpacity={0.6}
-            onPress={() => this.setState({ corredor: 1 })} >
-            <Text style={[styles.routeText, { fontSize: 40 }]} >03</Text>
-          </TouchableOpacity>
-          <View style={styles.corredor}>
-          </View>
-        </View>
+        <Map atualizaCorredor={(id) => this.setState({ corredor: id })} />
       )
     } else {
       return (
-        <View style={styles.image} >
-          <View style={styles.corredor}>
-          </View>
-          <View style={{ justifyContent: 'space-around', height: '100%' }} >
-            <TouchableOpacity style={styles.item} >
-              <Text style={{ color: 'white' }} > {'<-'} Copos</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.item} >
-              <Text style={{ color: 'white' }} > {'<-'} Pratos</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.item} >
-              <Text style={{ color: 'white' }} > {'<-'} Balões</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.corredor}>
-          </View>
-        </View>
+        <Corredor id={this.state.corredor} />
       )
     }
   }
@@ -97,7 +55,7 @@ class MapScreen extends Component {
           </TouchableOpacity>
         </View>
         <View style={styles.image}>
-          <Map />
+          {this._renderMap()}
         </View>
         <TouchableOpacity
           style={styles.indicator}
