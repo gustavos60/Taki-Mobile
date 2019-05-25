@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, FlatList, Text } from 'react-native'
 import { mapa } from '../mapa'
+import { connect } from 'react-redux'
 
-export default class Corredor extends Component {
+class Corredor extends Component {
 
   constructor(props) {
     super(props)
@@ -26,7 +27,7 @@ export default class Corredor extends Component {
           added = true
         }
       })
-      if (!added) unicos.push({ nome: item.categoria, total: 1 })
+      if (!added) unicos.push({ nome: item.categoria, id: item.id, total: 1 })
     })
     return unicos
   }
@@ -57,6 +58,7 @@ export default class Corredor extends Component {
     })
     ladoEsquerdo = this._contaUnicos(ladoEsquerdo)
     ladoDireito = this._contaUnicos(ladoDireito)
+    console.log(ladoEsquerdo)
 
     let totalEsquerda = 0
     let totalDireita = 0
@@ -92,10 +94,12 @@ export default class Corredor extends Component {
             style={{ flex: 1, backgroundColor: '#0000FF' }}
             renderItem={(item) => {
               let height = item.item.total * fracaoEsquerda
+              let backgroundColor = '#E0E0E0'
+              if (this.props.itens[item.item.id].selected) backgroundColor = '#44FF66'
               return (
                 <View style={[styles.lado, { height }]} >
-                  <Text>{item.item.nome} </Text>
-                  <View style={styles.prateleira} />
+                  <Text style={{ width: 90 }} numberOfLines={2} >{item.item.nome} </Text>
+                  <View style={[styles.prateleira, { backgroundColor }]} />
                 </View>
               )
             }}
@@ -105,16 +109,18 @@ export default class Corredor extends Component {
 
         </View>
         <View style={styles.direita}>
-        <FlatList
+          <FlatList
             data={this.state.ladoDireito}
             keyExtractor={(item, index) => '' + index}
             style={{ flex: 1, backgroundColor: '#0000FF' }}
             renderItem={(item) => {
               let height = item.item.total * fracaoDireita
+              let backgroundColor = '#E0E0E0'
+              if (this.props.itens[item.item.id].selected) backgroundColor = '#44FF66'
               return (
                 <View style={[styles.lado, { height }]} >
-                  <View style={styles.prateleira} />
-                  <Text>{item.item.nome} </Text>
+                  <View style={[styles.prateleira, { backgroundColor }]} />
+                  <Text style={{ width: 90 }} numberOfLines={2} >{item.item.nome} </Text>
                 </View>
               )
             }}
@@ -124,6 +130,12 @@ export default class Corredor extends Component {
     )
   }
 }
+
+const mapStateToProps = (store) => ({
+  itens: store.itemState.itens
+})
+
+export default connect(mapStateToProps, null)(Corredor)
 
 const styles = StyleSheet.create({
   divider: {
@@ -137,15 +149,12 @@ const styles = StyleSheet.create({
   },
   esquerda: {
     flex: 2,
-    backgroundColor: '#AA1188'
   },
   direita: {
     flex: 2,
-    backgroundColor: '#1166FF'
   },
   prateleira: {
     width: 30,
-    backgroundColor: '#E0E0E0',
     height: '100%',
     borderWidth: 2,
     borderColor: '#000000'
