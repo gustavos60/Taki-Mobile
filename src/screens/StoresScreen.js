@@ -20,8 +20,8 @@ export default class HomeScreen extends Component {
               style={styles.store}
               onPress={() => this.props.navigation.navigate('Main')}
             >
-              <Image style={styles.image} resizeMode='center' source={require('../../assets/images/atacadao.png')} />
-              <Text >Atacado dos Presentes</Text>
+              <Image style={styles.image} resizeMode='center' source={require('../../assets/images/arcomix.png')} />
+              <Text >Arco-Mix</Text>
             </TouchableOpacity>
           </Painel>
         </View>
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     flex: 5,
   },
   store: {
-    justifyContent: 'space-around',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
     flexDirection: 'row',
     width: '90%',
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   image: {
-    height: 45,
-    width: 45,
+    height: 60,
+    width: 60,
   }
 })
