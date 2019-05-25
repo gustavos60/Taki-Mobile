@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-import { FlatList, ToastAndroid, View, TouchableOpacity } from 'react-native'
+import { FlatList, View, TouchableOpacity } from 'react-native'
 import { Dimensions } from 'react-native'
 
-export default class Linha extends Component {
+import { connect } from 'react-redux'
+
+class Linha extends Component {
 
   render() {
 
@@ -18,6 +20,7 @@ export default class Linha extends Component {
         renderItem={(item) => {
 
           let text, backgroundColor
+          let selected = false
           let corredor = false
           switch (item.item.tipo) {
             case 'entrada':
@@ -27,6 +30,7 @@ export default class Linha extends Component {
             case 'prateleira':
               backgroundColor = '#0000FF'
               text = item.item.categoria
+              selected = this.props.itens[item.item.id].selected
               break;
             case 'corredor':
               backgroundColor = '#E0E0E0'
@@ -47,6 +51,7 @@ export default class Linha extends Component {
               }}
             ></TouchableOpacity>
           } else {
+            if (selected) backgroundColor = '#44FF66'
             return <View style={{ backgroundColor, width: itemWidth }} />
           }
         }}
@@ -54,3 +59,9 @@ export default class Linha extends Component {
     )
   }
 }
+
+const mapStateToProps = (store) => ({
+  itens: store.itemState.itens
+})
+
+export default connect(mapStateToProps, null)(Linha)
