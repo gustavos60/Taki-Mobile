@@ -52,7 +52,7 @@ class MapScreen extends Component {
             style={styles.rota}
             onPress={() => {
                 this.setState({ corredor: 0 })
-                this.props.navigation.navigate('RouteScreen')
+                this.props.navigation.navigate('Route')
               }
             }>
             {this._buttonText()}

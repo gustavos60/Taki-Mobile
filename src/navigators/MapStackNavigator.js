@@ -2,11 +2,11 @@ import { createStackNavigator, createAppContainer } from 'react-navigation'
 import RouteScreen from '../screens/RouteScreen';
 import MapScreen from '../screens/MapScreen'
 
-const MainStackNavigator = createStackNavigator({
+const MapStackNavigator = createStackNavigator({
     Map: { screen: MapScreen, navigationOptions: { header: null } },
-    RouteScreen: RouteScreen
+    Route: {screen: RouteScreen, navigationOptions: { header: null}}
 }, {
     headerMode: 'screen'
   })
 
-export default createAppContainer(MainStackNavigator)
+export default createAppContainer(MapStackNavigator)
