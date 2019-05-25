@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FlatList, ToastAndroid, TouchableOpacity } from 'react-native'
+import { FlatList, ToastAndroid, View, TouchableOpacity } from 'react-native'
 import { Dimensions } from 'react-native'
 
 export default class Linha extends Component {
@@ -37,14 +37,18 @@ export default class Linha extends Component {
               backgroundColor = '#000000'
               break;
           }
-          return <TouchableOpacity
-            activeOpacity={0.7}
-            style={{ backgroundColor, width: itemWidth }}
-            onPress={() => {
-              if (corredor) this.props.atualizaCorredor(item.item.id)
-              ToastAndroid.show(text, ToastAndroid.SHORT)
-            }}
-          ></TouchableOpacity>
+          if (corredor) {
+            return <TouchableOpacity
+              activeOpacity={0.7}
+              style={{ backgroundColor, width: itemWidth }}
+              onPress={() => {
+                this.props.atualizaCorredor(item.item.id)
+                // ToastAndroid.show(text, ToastAndroid.SHORT)
+              }}
+            ></TouchableOpacity>
+          } else {
+            return <View style={{ backgroundColor, width: itemWidth }} />
+          }
         }}
       />
     )
