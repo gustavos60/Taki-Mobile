@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 import SearchBar from '../components/SearchBar'
 import Map from '../components/Map'
-import Corredor from '../components/Corredor'
 import { connect } from 'react-redux'
 
 
@@ -22,12 +21,15 @@ class MapScreen extends Component {
       )
     } else {
       return (
-        <Corredor id={this.state.corredor} />
+        this.props.navigation.navigate('Aisle', {
+          corredor: this.state.corredor
+        })
       )
+        
     }
   }
 
-  _buttonText = () => {
+  /*_buttonText = () => {
     if (this.state.corredor === 0) {
       return (
         <Text style={styles.routeText} >Traçar rota</Text>
@@ -37,7 +39,7 @@ class MapScreen extends Component {
         <Text style={styles.routeText} >Retornar ao mapa</Text>
       )
     }
-  }
+  }*/
 
   render() {
     return (
@@ -55,7 +57,7 @@ class MapScreen extends Component {
                 this.props.navigation.navigate('Route')
               }
             }>
-            {this._buttonText()}
+            <Text style={styles.routeText} >Traçar rota</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.image}>
@@ -140,5 +142,5 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 15,
     fontWeight: 'bold'
-  }
+  },
 })
