@@ -90,7 +90,7 @@ class Corredor extends Component {
           <FlatList
             data={this.state.ladoEsquerdo}
             keyExtractor={(item, index) => '' + index}
-            style={{ flex: 1, backgroundColor: '#0000FF' }}
+            style={{ flex: 1 }}
             renderItem={(item) => {
               let height = item.item.total * fracaoEsquerda
               let backgroundColor = '#E0E0E0'
@@ -111,7 +111,7 @@ class Corredor extends Component {
           <FlatList
             data={this.state.ladoDireito}
             keyExtractor={(item, index) => '' + index}
-            style={{ flex: 1, backgroundColor: '#0000FF' }}
+            style={{ flex: 1 }}
             renderItem={(item) => {
               let height = item.item.total * fracaoDireita
               let backgroundColor = '#E0E0E0'
