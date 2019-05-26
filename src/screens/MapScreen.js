@@ -52,7 +52,7 @@ class MapScreen extends Component {
             style={styles.rota}
             onPress={() => {
                 this.setState({ corredor: 0 })
-                this.props.navigation.navigate('Route')
+                this.props.navigation.navigate(this.state.corredor == 0 ? 'Route':'Map') 
               }
             }>
             {this._buttonText()}
@@ -140,5 +140,14 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 15,
     fontWeight: 'bold'
+  },
+  indicator: {
+    width: '100%',
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    backgroundColor: '#e1e1e1',
   }
 })
