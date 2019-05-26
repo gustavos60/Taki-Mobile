@@ -8,7 +8,7 @@ import React from 'react';
 const TabNavigator = createBottomTabNavigator(
     {
         Lojas: StoresScreen, 
-        Compras: MainStackNavigator,
+        Carrinho: MainStackNavigator,
         Conta: ProfileScreen
     },
     {
@@ -21,7 +21,7 @@ const TabNavigator = createBottomTabNavigator(
                     case 'Lojas':
                         iconName = 'menu'
                         break;
-                    case 'Compras':
+                    case 'Carrinho':
                         iconName = 'cart'
                         break;
                     case 'Conta':
