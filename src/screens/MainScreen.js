@@ -6,6 +6,7 @@ import SearchBar from '../components/SearchBar'
 import Categoria from '../components/Categoria'
 import Painel from '../components/Painel'
 import Divider from '../components/Divider'
+import LoginButton from '../components/LoginButton'
 
 
 class MainScreen extends Component {
@@ -25,6 +26,13 @@ class MainScreen extends Component {
             <Divider />
           </ScrollView>
         </View>
+        <LoginButton
+            color='#47B036'
+            text='Ir às compras'
+            iconName='shopping'
+            textColor='white'
+            onPress={() => this.props.navigation.navigate('Map')}
+        />
         <TouchableOpacity
           style={styles.indicator}
           onPress={() => this.props.navigation.navigate('List')}

@@ -50,7 +50,11 @@ class MapScreen extends Component {
           <TouchableOpacity
             activeOpacity={0.7}
             style={styles.rota}
-            onPress={() => this.setState({ corredor: 0 })}>
+            onPress={() => {
+                this.setState({ corredor: 0 })
+                this.props.navigation.navigate(this.state.corredor == 0 ? 'Route':'Map') 
+              }
+            }>
             {this._buttonText()}
           </TouchableOpacity>
         </View>
@@ -136,5 +140,14 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 15,
     fontWeight: 'bold'
+  },
+  indicator: {
+    width: '100%',
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    backgroundColor: '#e1e1e1',
   }
 })
