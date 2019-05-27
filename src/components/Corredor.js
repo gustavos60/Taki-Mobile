@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, StyleSheet, FlatList, Text } from 'react-native'
 import { mapa } from '../mapa'
 import { connect } from 'react-redux'
+import { corredorColors } from '../colors'
 
 class Corredor extends Component {
 
@@ -77,6 +78,13 @@ class Corredor extends Component {
     })
   }
 
+  _renderNumeroCorredor = () => {
+    let index = this.props.id % 4
+    let color = corredorColors[index]
+
+    return <Text style={{ color, fontSize: 30 }} >{this.props.id}</Text>
+  }
+
   render() {
 
     let fracaoDireita = this.state.height / this.state.totalDireita
@@ -94,10 +102,17 @@ class Corredor extends Component {
             renderItem={(item) => {
               let height = item.item.total * fracaoEsquerda
               let backgroundColor = '#FFFFFF'
-              if (this.props.itens[item.item.id].selected) backgroundColor = '#FFA451'
+              let selected = this.props.itens[item.item.id].selected
+              let nome = ''
+              let tag = <View></View>
+              if (selected) {
+                backgroundColor = '#FFA451'
+                nome = item.item.nome
+                tag = <Text style={styles.indicador} numberOfLines={2} >{nome}</Text>
+              }
               return (
                 <View style={[styles.lado, { height }]} >
-                  <Text style={{ width: 90 }} numberOfLines={2} >{item.item.nome} </Text>
+                  {tag}
                   <View style={[styles.prateleira, { backgroundColor }]} />
                 </View>
               )
@@ -105,7 +120,7 @@ class Corredor extends Component {
           />
         </View>
         <View style={styles.meio}>
-
+          {this._renderNumeroCorredor()}
         </View>
         <View style={styles.direita}>
           <FlatList
@@ -115,11 +130,18 @@ class Corredor extends Component {
             renderItem={(item) => {
               let height = item.item.total * fracaoDireita
               let backgroundColor = '#FFFFFF'
-              if (this.props.itens[item.item.id].selected) backgroundColor = '#FFA451'
+              let selected = this.props.itens[item.item.id].selected
+              let nome = ''
+              let tag = <View></View>
+              if (selected) {
+                backgroundColor = '#FFA451'
+                nome = item.item.nome
+                tag = <Text style={styles.indicador} numberOfLines={2} >{nome}</Text>
+              }
               return (
                 <View style={[styles.lado, { height }]} >
                   <View style={[styles.prateleira, { backgroundColor }]} />
-                  <Text style={{ width: 90 }} numberOfLines={2} >{item.item.nome} </Text>
+                  {tag}
                 </View>
               )
             }}
@@ -144,13 +166,15 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   meio: {
-    flex: 1
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   esquerda: {
-    flex: 2,
+    flex: 3,
   },
   direita: {
-    flex: 2,
+    flex: 3,
   },
   prateleira: {
     width: 30,
@@ -163,5 +187,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     justifyContent: 'space-between',
     alignItems: 'center'
+  },
+  indicador: {
+    width: 90,
+    backgroundColor: '#67E352',
+    borderRadius: 20,
+    textAlign: 'center',
+    color: '#FFFFFF'
   }
 })
