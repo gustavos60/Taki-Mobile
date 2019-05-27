@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import SearchBar from '../components/SearchBar';
 import { connect } from 'react-redux';
-import Corredor from '../components/Corredor';
-import CorredorRoute from '../components/CorredorRoute';
 
 class RouteScreen extends Component {
     constructor(props) {
