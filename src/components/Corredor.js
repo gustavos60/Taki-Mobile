@@ -90,11 +90,11 @@ class Corredor extends Component {
           <FlatList
             data={this.state.ladoEsquerdo}
             keyExtractor={(item, index) => '' + index}
-            style={{ flex: 1, backgroundColor: '#0000FF' }}
+            style={{ flex: 1 }}
             renderItem={(item) => {
               let height = item.item.total * fracaoEsquerda
-              let backgroundColor = '#E0E0E0'
-              if (this.props.itens[item.item.id].selected) backgroundColor = '#44FF66'
+              let backgroundColor = '#FFFFFF'
+              if (this.props.itens[item.item.id].selected) backgroundColor = '#FFA451'
               return (
                 <View style={[styles.lado, { height }]} >
                   <Text style={{ width: 90 }} numberOfLines={2} >{item.item.nome} </Text>
@@ -111,11 +111,11 @@ class Corredor extends Component {
           <FlatList
             data={this.state.ladoDireito}
             keyExtractor={(item, index) => '' + index}
-            style={{ flex: 1, backgroundColor: '#0000FF' }}
+            style={{ flex: 1 }}
             renderItem={(item) => {
               let height = item.item.total * fracaoDireita
-              let backgroundColor = '#E0E0E0'
-              if (this.props.itens[item.item.id].selected) backgroundColor = '#44FF66'
+              let backgroundColor = '#FFFFFF'
+              if (this.props.itens[item.item.id].selected) backgroundColor = '#FFA451'
               return (
                 <View style={[styles.lado, { height }]} >
                   <View style={[styles.prateleira, { backgroundColor }]} />

@@ -28,12 +28,12 @@ class Linha extends Component {
               text = 'Entrada'
               break;
             case 'prateleira':
-              backgroundColor = '#0000FF'
+              backgroundColor = '#E0E0E0'
               text = item.item.categoria
               selected = this.props.itens[item.item.id].selected
               break;
             case 'corredor':
-              backgroundColor = '#E0E0E0'
+              backgroundColor = '#FFFFFF'
               text = 'Corredor ' + item.item.id
               corredor = true
               break;
@@ -51,7 +51,7 @@ class Linha extends Component {
               }}
             ></TouchableOpacity>
           } else {
-            if (selected) backgroundColor = '#44FF66'
+            if (selected) backgroundColor = '#FFA451'
             return <View style={{ backgroundColor, width: itemWidth }} />
           }
         }}
