@@ -28,7 +28,7 @@ class Linha extends Component {
               text = 'Entrada'
               break;
             case 'prateleira':
-              backgroundColor = '#E0E0E0'
+              backgroundColor = '#808080'
               text = item.item.categoria
               selected = this.props.itens[item.item.id].selected
               break;
@@ -47,7 +47,6 @@ class Linha extends Component {
               style={{ backgroundColor, width: itemWidth }}
               onPress={() => {
                 this.props.atualizaCorredor(item.item.id)
-                // ToastAndroid.show(text, ToastAndroid.SHORT)
               }}
             ></TouchableOpacity>
           } else {
