@@ -28,7 +28,8 @@ class MainScreen extends Component {
         </View>
         <LoginButton
             color='#47B036'
-            text='Ir as compras!'
+            text='Ir às compras'
+            iconName='shopping'
             textColor='white'
             onPress={() => this.props.navigation.navigate('Map')}
         />
