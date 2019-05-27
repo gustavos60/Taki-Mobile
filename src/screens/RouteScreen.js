@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import SearchBar from '../components/SearchBar';
 import { connect } from 'react-redux';
-
+import Corredor from '../components/Corredor';
+import CorredorRoute from '../components/CorredorRoute';
 
 class RouteScreen extends Component {
     constructor(props) {
@@ -20,7 +21,7 @@ class RouteScreen extends Component {
               <Text style={styles.storeText} >Arco-Mix</Text>
             </View>
             <View style={styles.image}>
-              
+              <CorredorRoute id={1} />
             </View>
             <TouchableOpacity
               style={styles.indicator}
@@ -74,4 +75,8 @@ const styles = StyleSheet.create({
       fontSize: 15,
       marginTop: 10
     },
+})
+
+const aisleStyle = StyleSheet.create({
+
 })
