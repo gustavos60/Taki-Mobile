@@ -9,7 +9,7 @@ export default class HomeScreen extends Component {
     return (
       <LinearGradient colors={['#D57300', '#F5276E']} useAngle={true} angle={36} angleCenter={{ x: 0.5, y: 0.5 }} style={styles.container}>
         <Image style={styles.logo} resizeMode='center' source={require('../../assets/images/logo.png')} />
-        <LoginButton text="Continuar com Google" onPress={() => this.props.navigation.navigate('Store')} />
+        <LoginButton style ={styles.icon} text="Continuar com Google" onPress={() => this.props.navigation.navigate('Store')} />
         <LoginButton text="Continuar com Facebook" onPress={() => this.props.navigation.navigate('Store')} />
       </LinearGradient>
     )
