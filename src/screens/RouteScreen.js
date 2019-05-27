@@ -21,7 +21,7 @@ class RouteScreen extends Component {
               <Text style={styles.storeText} >Arco-Mix</Text>
             </View>
             <View style={styles.image}>
-              <CorredorRoute id={1} />
+              
             </View>
             <TouchableOpacity
               style={styles.indicator}
