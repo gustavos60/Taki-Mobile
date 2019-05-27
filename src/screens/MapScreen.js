@@ -44,7 +44,7 @@ class MapScreen extends Component {
       <View style={styles.container} >
         <View style={styles.searchContainer} >
           <SearchBar placeholder='Busque um produto...' />
-          <Text style={styles.storeText} >Atacado dos Presentes</Text>
+          <Text style={styles.storeText} >Arco Mix</Text>
         </View>
         <View style={styles.container} >
           <TouchableOpacity
