@@ -55,7 +55,8 @@ class ListScreen extends Component {
         <View style={{ alignItems: "center" }} >
           <LoginButton
             color='#47B036'
-            text='Ir as compras!'
+            text='Ir às compras'
+            iconName='shopping'
             textColor='white'
             onPress={() => this.props.navigation.navigate('Map')}
           />
