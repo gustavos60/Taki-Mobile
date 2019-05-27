@@ -1,1 +1,4 @@
 export const TOGGLE_SELECTED = 'TOGGLE_SELECTED'
+export const PREV_ROTA = 'PREV_ROTA'
+export const NEXT_ROTA = 'NEXT_ROTA'
+export const ATUALIZA_ROTA = 'ATUALIZA_ROTA'
