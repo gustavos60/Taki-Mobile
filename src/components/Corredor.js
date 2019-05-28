@@ -82,7 +82,7 @@ class Corredor extends Component {
   }
 
   _renderNumeroCorredor = () => {
-    let color = '#000000'
+    let color = corredorColors[this.props.id % 4]
 
     return <Text style={{ color, fontSize: 30, fontWeight: 'bold' }} >{this.props.id}</Text>
   }
@@ -121,7 +121,7 @@ class Corredor extends Component {
             }}
           />
         </View>
-        <View style={[styles.meio, { backgroundColor: this.state.color + '7F' }]}>
+        <View style={styles.meio}>
           {this._renderNumeroCorredor()}
         </View>
         <View style={styles.direita}>
