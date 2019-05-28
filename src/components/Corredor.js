@@ -14,7 +14,8 @@ class Corredor extends Component {
       totalEsquerda: 0,
       totalDireita: 0,
       corredor: [],
-      height: 0
+      height: 0,
+      color: ''
     }
   }
 
@@ -74,15 +75,16 @@ class Corredor extends Component {
       ladoDireito,
       ladoEsquerdo,
       totalEsquerda,
-      totalDireita
+      totalDireita,
+      color: corredorColors[this.props.id % 4]
     })
+
   }
 
   _renderNumeroCorredor = () => {
-    let index = this.props.id % 4
-    let color = corredorColors[index]
+    let color = '#000000'
 
-    return <Text style={{ color, fontSize: 30 }} >{this.props.id}</Text>
+    return <Text style={{ color, fontSize: 30, fontWeight: 'bold' }} >{this.props.id}</Text>
   }
 
   render() {
@@ -119,7 +121,7 @@ class Corredor extends Component {
             }}
           />
         </View>
-        <View style={styles.meio}>
+        <View style={[styles.meio, { backgroundColor: this.state.color + '7F' }]}>
           {this._renderNumeroCorredor()}
         </View>
         <View style={styles.direita}>
