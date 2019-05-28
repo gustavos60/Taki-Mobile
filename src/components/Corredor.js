@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
   },
   indicador: {
     width: 90,
-    backgroundColor: '#67E352',
+    backgroundColor: '#47B036',
     borderRadius: 20,
     textAlign: 'center',
     color: '#FFFFFF'
