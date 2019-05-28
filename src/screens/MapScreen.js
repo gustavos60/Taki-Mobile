@@ -4,6 +4,7 @@ import SearchBar from '../components/SearchBar'
 import Map from '../components/Map'
 import Corredor from '../components/Corredor'
 import { connect } from 'react-redux'
+import { mapa } from '../mapa'
 
 
 class MapScreen extends Component {
@@ -12,13 +13,31 @@ class MapScreen extends Component {
     super(props)
     this.state = {
       corredor: 0,
+      corredores: []
     }
+  }
+
+  componentDidMount() {
+    let corredores = []
+    let itens = this.props.itens.filter(item => item.selected)
+    mapa.forEach(linha => {
+      linha.forEach(item => {
+        if (item.tipo === 'prateleira') {
+          let filtro = itens.filter(dado => dado.id === item.id)
+          if (filtro.length > 0) {
+            let corredor = item.idcorredor
+            if (!corredores.includes(corredor)) corredores.push(corredor)
+          }
+        }
+      })
+    })
+    this.setState({ corredores })
   }
 
   _renderMap = () => {
     if (this.state.corredor === 0) {
       return (
-        <Map atualizaCorredor={(id) => this.setState({ corredor: id })} />
+        <Map corredores={this.state.corredores} atualizaCorredor={(id) => this.setState({ corredor: id })} />
       )
     } else {
       return (
@@ -51,9 +70,9 @@ class MapScreen extends Component {
             activeOpacity={0.7}
             style={styles.rota}
             onPress={() => {
-                this.setState({ corredor: 0 })
-                this.props.navigation.navigate(this.state.corredor == 0 ? 'Route':'Map') 
-              }
+              this.setState({ corredor: 0 })
+              this.props.navigation.navigate(this.state.corredor == 0 ? 'Route' : 'Map')
+            }
             }>
             {this._buttonText()}
           </TouchableOpacity>
@@ -73,7 +92,8 @@ class MapScreen extends Component {
   }
 }
 const mapStateToProps = (store) => ({
-  total: store.itemState.totalSelected
+  total: store.itemState.totalSelected,
+  itens: store.itemState.itens
 })
 
 export default connect(mapStateToProps, null)(MapScreen)
