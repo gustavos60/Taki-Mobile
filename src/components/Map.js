@@ -26,6 +26,7 @@ export default class Map extends Component {
           keyExtractor={(item, index) => '' + index}
           renderItem={(linha) =>
             <Linha
+              corredores={this.props.corredores}
               atualizaCorredor={this.props.atualizaCorredor}
               itemHeight={itemHeight}
               dado={linha.item} />}
