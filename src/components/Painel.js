@@ -14,7 +14,7 @@ export default class Painel extends Component {
 
     this.state = {
       title: props.title,
-      expanded: false,
+      expanded: props.expanded,
     }
   }
 
