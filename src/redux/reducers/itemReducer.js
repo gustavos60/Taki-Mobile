@@ -318,7 +318,7 @@ const initialState = {
       selected: false
     },
     {
-      nome: 'aveia/neston/maizena',
+      nome: 'Aveia',
       id: 45,
       idImagem: 2,
       idCategoria: 1,
@@ -353,7 +353,7 @@ const initialState = {
       selected: false
     },
     {
-      nome: 'Tinta_Cabelo',
+      nome: 'Beleza',
       id: 50,
       idImagem: 2,
       idCategoria: 1,
