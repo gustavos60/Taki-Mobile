@@ -1,5 +1,10 @@
 export const mapa = [
-    [ //linha 1 -> Tamanho 34
+  [ //linha 1 -> Tamanho 34
+    { "tipo": "prateleira", "categoria": "Frigorífico", "idcorredor": 8, "id": 40 },
+    { "tipo": "prateleira", "categoria": "Frigorífico", "idcorredor": 8, "id": 40 },
+    { "tipo": "prateleira", "categoria": "Frigorífico", "idcorredor": 8, "id": 40 },
+    { "tipo": "prateleira", "categoria": "Frigorífico", "idcorredor": 8, "id": 40 },
+    { "tipo": "prateleira", "categoria": "Frigorífico", "idcorredor": 8, "id": 40 },
     { "tipo": "prateleira", "categoria": "Frigorífico", "idcorredor": 8, "id": 40 },
     { "tipo": "prateleira", "categoria": "Frigorífico", "idcorredor": 8, "id": 40 },
     { "tipo": "prateleira", "categoria": "Frigorífico", "idcorredor": 8, "id": 40 },
@@ -9,8 +14,11 @@ export const mapa = [
     { "tipo": "corredor", "id": 0 },
     { "tipo": "corredor", "id": 0 },
     { "tipo": "corredor", "id": 0 },
-    { "tipo": "corredor", "id": 0 },
-    { "tipo": "corredor", "id": 0 },
+    { "tipo": "prateleira", "categoria": "Padaria", "idcorredor": 8, "id": 16 },
+    { "tipo": "prateleira", "categoria": "Padaria", "idcorredor": 8, "id": 16 },
+    { "tipo": "prateleira", "categoria": "Padaria", "idcorredor": 8, "id": 16 },
+    { "tipo": "prateleira", "categoria": "Padaria", "idcorredor": 8, "id": 16 },
+    { "tipo": "prateleira", "categoria": "Padaria", "idcorredor": 8, "id": 16 },
     { "tipo": "prateleira", "categoria": "Padaria", "idcorredor": 8, "id": 16 },
     { "tipo": "prateleira", "categoria": "Padaria", "idcorredor": 8, "id": 16 },
     { "tipo": "prateleira", "categoria": "Padaria", "idcorredor": 8, "id": 16 },
@@ -20,21 +28,22 @@ export const mapa = [
 
   , [ //linha 2-> Numeração ficou boa aqui?
     { "tipo": "prateleira", "categoria": "Frango", "idcorredor": 8, "id": 33 },
+    { "tipo": "corredor", "id": 8 },
+    { "tipo": "corredor", "id": 8 },
+    { "tipo": "corredor", "id": 8 },
+    { "tipo": 'offset', 'id': 8 },
     { "tipo": "corredor", "id": 8, "num": true },
     { "tipo": "corredor", "id": 8 },
-    { "tipo": "corredor", "id": 0 },
-    { "tipo": "corredor", "id": 0 },
-    { "tipo": "corredor", "id": 0 },
-    { "tipo": "corredor", "id": 0 },
     { "tipo": "corredor", "id": 8 },
-    { "tipo": "corredor", "id": 8, "num": true },
+    { "tipo": "corredor", "id": 8 },
+    { "tipo": "corredor", "id": 8 },
     { "tipo": "prateleira", "categoria": "Hortifruti", "idcorredor": 1, "id": 15 }
-    
+
   ]
 
   , [ //linha 3
-    { "tipo": "prateleira", "categoria": "Frango", "idcorredor": 7, "id": 33 },
-    { "tipo": "corredor", "id": 7 },
+    { "tipo": "prateleira", "categoria": "Frango", "idcorredor": 6, "id": 33 },
+    { "tipo": "corredor", "id": 6 },
     { "tipo": "corredor", "id": 0 },
     { "tipo": "corredor", "id": 0 },
     { "tipo": "corredor", "id": 4 },
@@ -51,13 +60,13 @@ export const mapa = [
   ]
 
   , [//linha 4
-    { "tipo": "prateleira", "categoria": "Carnes", "idcorredor": 7, "id": 34 },
-    { "tipo": "corredor", "id": 7 },
-    { "tipo": "corredor", "id": 7 },
+    { "tipo": "prateleira", "categoria": "Carnes", "idcorredor": 6, "id": 34 },
+    { "tipo": "corredor", "id": 6 },
+    { "tipo": "prateleira", "categoria": "Bebidas", "idcorredor": 6, "id": 13 },
     { "tipo": "prateleira", "categoria": "Bebidas", "idcorredor": 6, "id": 13 },
     { "tipo": "prateleira", "categoria": "Carnes", "idcorredor": 5, "id": 34 },
-    { "tipo": "corredor", "id": 10 },
-    { "tipo": "corredor", "id": 0 },
+    { "tipo": "prateleira", "categoria": "Carnes", "idcorredor": 5, "id": 34 },
+    { "tipo": "corredor", "id": 5 },
     { "tipo": "corredor", "id": 4 },
     { "tipo": "prateleira", "categoria": "Carnes", "idcorredor": 4, "id": 34 },
     { "tipo": "prateleira", "categoria": "Bebidas", "idcorredor": 3, "id": 13 },
@@ -69,17 +78,17 @@ export const mapa = [
     { "tipo": "prateleira", "categoria": "Frutas", "idcorredor": 1, "id": 19 },
     { "tipo": "corredor", "id": 1 },
     { "tipo": "prateleira", "categoria": "Hortifruti", "idcorredor": 1, "id": 15 }
-    
+
   ]
 
   , [ //linha 5 -> Numeração ficou boa aqui?
-    { "tipo": "prateleira", "categoria": "Carnes", "idcorredor": 7, "id": 34 },
-    { "tipo": "corredor", "id": 7, "num": true },
-    { "tipo": "corredor", "id": 7, "num": true },
+    { "tipo": "prateleira", "categoria": "Carnes", "idcorredor": 6, "id": 34 },
+    { "tipo": "corredor", "id": 6, "num": true },
+    { "tipo": "prateleira", "categoria": "Embutidos", "idcorredor": 6, "id": 32 },
     { "tipo": "prateleira", "categoria": "Embutidos", "idcorredor": 6, "id": 32 },
     { "tipo": "prateleira", "categoria": "Laticínios", "idcorredor": 5, "id": 38 },
-    { "tipo": "corredor", "id": 10, "num": true },
-    { "tipo": "corredor", "id": 0 },
+    { "tipo": "prateleira", "categoria": "Laticínios", "idcorredor": 5, "id": 38 },
+    { "tipo": "corredor", "id": 5, "num": true },
     { "tipo": "corredor", "id": 4, "num": true },
     { "tipo": "prateleira", "categoria": "Verduras", "idcorredor": 4, "id": 28 },
     { "tipo": "prateleira", "categoria": "Verduras", "idcorredor": 3, "id": 28 },
@@ -95,8 +104,8 @@ export const mapa = [
   ]
 
   , [  //linha 6
-    { "tipo": "prateleira", "categoria": "Frios: Salsicha e Peixes", "idcorredor": 7, "id": 39 },
-    { "tipo": "corredor", "id": 7 },
+    { "tipo": "prateleira", "categoria": "Frios: Salsicha e Peixes", "idcorredor": 6, "id": 39 },
+    { "tipo": "corredor", "id": 6 },
     { "tipo": "corredor", "id": 0 },
     { "tipo": "corredor", "id": 0 },
     { "tipo": "corredor", "id": 4 },
@@ -115,16 +124,17 @@ export const mapa = [
 
   , [ //linha 7 -> Tamanho de 34
 
-    { "tipo": "prateleira", "categoria": "Frios: Salsicha e Peixes", "idcorredor": 7, "id": 39 },
+    { "tipo": "prateleira", "categoria": "Frios: Salsicha e Peixes", "idcorredor": -1, "id": 39 },
     { "tipo": "corredor", "id": 0 },
-    { "tipo": "corredor", "id": 4 },
     { "tipo": "corredor", "id": 0 },
-    { "tipo": "corredor", "id": 3 },
     { "tipo": "corredor", "id": 0 },
-    { "tipo": "corredor", "id": 2 },
     { "tipo": "corredor", "id": 0 },
-    { "tipo": "corredor", "id": 1 },
-    { "tipo": "prateleira", "categoria": "Bebidas", "idcorredor": 0, "id": 13 }
+    { "tipo": "corredor", "id": 0 },
+    { "tipo": "corredor", "id": 0 },
+    { "tipo": "corredor", "id": 0 },
+    { "tipo": "corredor", "id": 0 },
+    { "tipo": 'offset' },
+    { "tipo": "prateleira", "categoria": "Bebidas", "idcorredor": -1, "id": 13 }
 
   ]
 
@@ -233,7 +243,7 @@ export const mapa = [
     { "tipo": "corredor", "id": 2, "num": true },
     { "tipo": "prateleira", "categoria": "Biscoito", "idcorredor": 2, "id": 12 },
     { "tipo": "prateleira", "categoria": "Leites e Achocolatados", "idcorredor": 1, "id": 17 },
-    { "tipo": "corredor", "id": 1, "num": true},
+    { "tipo": "corredor", "id": 1, "num": true },
     { "tipo": "prateleira", "categoria": "Descartáveis", "idcorredor": 1, "id": 9 }
 
   ]
@@ -301,7 +311,7 @@ export const mapa = [
     { "tipo": "prateleira", "categoria": "Aveia", "idcorredor": 1, "id": 45 },
     { "tipo": "corredor", "id": 1 },
     { "tipo": "prateleira", "categoria": "Ofertas", "idcorredor": 1, "id": 44 }
-    
+
   ]
 
   , [ //linha 16
@@ -323,7 +333,7 @@ export const mapa = [
     { "tipo": "prateleira", "categoria": "Aveia", "idcorredor": 1, "id": 45 },
     { "tipo": "corredor", "id": 1 },
     { "tipo": "prateleira", "categoria": "Ofertas", "idcorredor": 1, "id": 44 }
-    
+
   ]
 
   , [ //linha 17
@@ -334,7 +344,7 @@ export const mapa = [
     { "tipo": "corredor", "id": 0 },
     { "tipo": "corredor", "id": 0 },
     { "tipo": "corredor", "id": 0 },
-    { "tipo": "corredor", "id": 0 },
+    { "tipo": "offset" },
     { "tipo": "entrada" }
   ]
 ]
