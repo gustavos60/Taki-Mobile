@@ -15,7 +15,7 @@ export default class HomeScreen extends Component {
         </View>
         <Divider />
         <View style={styles.storesContainer} >
-          <Painel title='Lojas de Departamento' >
+          <Painel title='Lojas de Departamento' expanded = {false} >
             <TouchableOpacity
               style={styles.store}
               onPress={() => this.props.navigation.navigate('Main')}
