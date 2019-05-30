@@ -104,7 +104,7 @@ export const mapa = [
   ]
 
   , [  //linha 6
-    { "tipo": "prateleira", "categoria": "Frios: Salsicha e Peixes", "idcorredor": 6, "id": 39 },
+    { "tipo": "prateleira", "categoria": "Frios", "idcorredor": 6, "id": 39 },
     { "tipo": "corredor", "id": 6 },
     { "tipo": "corredor", "id": 0 },
     { "tipo": "corredor", "id": 0 },
@@ -124,7 +124,7 @@ export const mapa = [
 
   , [ //linha 7 -> Tamanho de 34
 
-    { "tipo": "prateleira", "categoria": "Frios: Salsicha e Peixes", "idcorredor": -1, "id": 39 },
+    { "tipo": "prateleira", "categoria": "Frios", "idcorredor": -1, "id": 39 },
     { "tipo": "corredor", "id": 0 },
     { "tipo": "corredor", "id": 0 },
     { "tipo": "corredor", "id": 0 },
