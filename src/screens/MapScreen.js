@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native'
 import SearchBar from '../components/SearchBar'
 import Map from '../components/Map'
-import Corredor from '../components/Corredor'
 import { connect } from 'react-redux'
 import { mapa } from '../mapa'
 import Entrance from '../components/Entrance'
+import MapAndRoute from '../components/MapAndRoute';
+
 
 class MapScreen extends Component {
 
@@ -60,7 +61,12 @@ class MapScreen extends Component {
       <View style={styles.container} >
         <View style={styles.searchContainer} >
           <SearchBar placeholder='Busque um produto...' />
-          <Text style={styles.storeText} >Arco Mix</Text>
+          <MapAndRoute
+            store='Arco Mix'
+            subtitle='Mapa Principal'
+            onMapPress={() => {this.props.navigation.navigate('Map')}}
+            onRoutePress={() => {this.props.navigation.navigate('Route')}}
+          />
         </View>
         <View style={styles.container} >
           {this._buttonText()}
@@ -94,14 +100,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   searchContainer: {
-    flex: 1,
+    flex: 2,
     width: '100%',
     backgroundColor: '#FFA451',
     justifyContent: 'center',
     alignItems: 'center',
   },
   image: {
-    flex: 3,
+    flex: 5,
     margin: 10,
     width: '90%'
   },
@@ -130,12 +136,6 @@ const styles = StyleSheet.create({
     margin: 20,
     justifyContent: 'center',
     alignItems: 'center'
-  },
-  storeText: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 15,
-    marginTop: 10
   },
   rota: {
     backgroundColor: '#47B036',
