@@ -4,6 +4,7 @@ import SearchBar from '../components/SearchBar'
 import Map from '../components/Map'
 import Corredor from '../components/Corredor'
 import { connect } from 'react-redux'
+import { mapa } from '../mapa'
 
 
 class MapScreen extends Component {
@@ -12,13 +13,31 @@ class MapScreen extends Component {
     super(props)
     this.state = {
       corredor: 0,
+      corredores: []
     }
+  }
+
+  componentDidMount() {
+    let corredores = []
+    let itens = this.props.itens.filter(item => item.selected)
+    mapa.forEach(linha => {
+      linha.forEach(item => {
+        if (item.tipo === 'prateleira') {
+          let filtro = itens.filter(dado => dado.id === item.id)
+          if (filtro.length > 0) {
+            let corredor = item.idcorredor
+            if (!corredores.includes(corredor)) corredores.push(corredor)
+          }
+        }
+      })
+    })
+    this.setState({ corredores })
   }
 
   _renderMap = () => {
     if (this.state.corredor === 0) {
       return (
-        <Map atualizaCorredor={(id) => this.setState({ corredor: id })} />
+        <Map corredores={this.state.corredores} atualizaCorredor={(id) => this.setState({ corredor: id })} />
       )
     } else {
       return (
@@ -30,11 +49,21 @@ class MapScreen extends Component {
   _buttonText = () => {
     if (this.state.corredor === 0) {
       return (
-        <Text style={styles.routeText} >Traçar rota</Text>
+        <View style={styles.welcome} >
+          <Text style={{ color: '#FFA451', fontWeight: 'bold', fontSize: 16 }} >Bem-vindo ao Arco Mix!</Text>
+          <Text style={{ fontSize: 12, textAlign: 'center' }} >Os itens de sua lista estão nos corredores coloridos. Toque no corredor para uma visão mais detalhada.</Text>
+        </View>
       )
     } else {
       return (
-        <Text style={styles.routeText} >Retornar ao mapa</Text>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          style={styles.rota}
+          onPress={() => {
+            this.setState({ corredor: 0 })
+          }}>
+          <Text style={styles.routeText} >Retornar ao mapa</Text>
+        </TouchableOpacity>
       )
     }
   }
@@ -47,16 +76,8 @@ class MapScreen extends Component {
           <Text style={styles.storeText} >Arco Mix</Text>
         </View>
         <View style={styles.container} >
-          <TouchableOpacity
-            activeOpacity={0.7}
-            style={styles.rota}
-            onPress={() => {
-                this.setState({ corredor: 0 })
-                this.props.navigation.navigate(this.state.corredor == 0 ? 'Route':'Map') 
-              }
-            }>
-            {this._buttonText()}
-          </TouchableOpacity>
+
+          {this._buttonText()}
         </View>
         <View style={styles.image}>
           {this._renderMap()}
@@ -73,7 +94,8 @@ class MapScreen extends Component {
   }
 }
 const mapStateToProps = (store) => ({
-  total: store.itemState.totalSelected
+  total: store.itemState.totalSelected,
+  itens: store.itemState.itens
 })
 
 export default connect(mapStateToProps, null)(MapScreen)
@@ -130,9 +152,9 @@ const styles = StyleSheet.create({
   },
   rota: {
     backgroundColor: '#47B036',
+    borderRadius: 10,
     width: 200,
     height: 50,
-    borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center'
   },
@@ -149,5 +171,11 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     backgroundColor: '#e1e1e1',
+  },
+  welcome: {
+    width: 300,
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 })

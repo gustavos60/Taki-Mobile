@@ -11,27 +11,38 @@ import LoginButton from '../components/LoginButton'
 
 class MainScreen extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      busca: ''
+    }
+  }
+
   render() {
     return (
       <View style={styles.container} >
         <View style={styles.searchContainer}>
-          <SearchBar placeholder='Busque um produto...' />
+          <SearchBar
+            placeholder='Busque um produto...'
+            value={this.state.busca}
+            onChangeText={(text) => this.setState({ busca: text })}
+          />
         </View>
         <Divider />
         <View style={styles.categoriasContainer} >
           <ScrollView style={{ flex: 5 }} >
-            <Painel title='Escritorio' children={<Categoria id={1} />} />
+            <Painel title='Escritorio' expanded={false} children={<Categoria filtro={this.state.busca} id={1} />} />
             <Divider />
-            <Painel title='Festas' children={<Categoria id={2} />} />
+            <Painel title='Festas' expanded={false} children={<Categoria filtro={this.state.busca} id={2} />} />
             <Divider />
           </ScrollView>
         </View>
         <LoginButton
-            color='#47B036'
-            text='Ir às compras'
-            iconName='shopping'
-            textColor='white'
-            onPress={() => this.props.navigation.navigate('Map')}
+          color='#47B036'
+          text='Ir às compras'
+          iconName='shopping'
+          textColor='white'
+          onPress={() => this.props.navigation.navigate('Map')}
         />
         <TouchableOpacity
           style={styles.indicator}
@@ -67,7 +78,7 @@ const styles = StyleSheet.create({
   categoriasContainer: {
     flex: 5,
     width: '100%',
-    
+
   },
   indicator: {
     width: '100%',

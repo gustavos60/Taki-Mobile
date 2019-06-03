@@ -122,14 +122,14 @@ const initialState = {
       selected: false
     },
     {
-      nome: 'Leite/Achoc/Cereal',
+      nome: 'Leite e Achocolatado',
       id: 17,
       idImagem: 2,
       idCategoria: 1,
       selected: false
     },
     {
-      nome: 'Doces/Bolos',
+      nome: 'Doces e Bolos',
       id: 18,
       idImagem: 2,
       idCategoria: 1,
@@ -318,7 +318,7 @@ const initialState = {
       selected: false
     },
     {
-      nome: 'aveia/neston/maizena',
+      nome: 'Aveia',
       id: 45,
       idImagem: 2,
       idCategoria: 1,
@@ -346,42 +346,42 @@ const initialState = {
       selected: false
     },
     {
-      nome: 'Cuscuz/Milho',
+      nome: 'Cuscuz e Milho',
       id: 49,
       idImagem: 2,
       idCategoria: 1,
       selected: false
     },
     {
-      nome: 'Tinta_Cabelo',
+      nome: 'Beleza',
       id: 50,
       idImagem: 2,
       idCategoria: 1,
       selected: false
     },
     {
-      nome: 'Margarinas/Manteigas',
+      nome: 'Margarinas e Manteigas',
       id: 51,
       idImagem: 2,
       idCategoria: 1,
       selected: false
     },
     {
-      nome: 'Pre_Prontos',
+      nome: 'Pré Prontos',
       id: 52,
       idImagem: 2,
       idCategoria: 1,
       selected: false
     },
     {
-      nome: 'arroz/farinha/acucar',
+      nome: 'Arroz, Farinha e Açúcar',
       id: 53,
       idImagem: 2,
       idCategoria: 1,
       selected: false
     },
     {
-      nome: 'Cafe',
+      nome: 'Café',
       id: 54,
       idImagem: 2,
       idCategoria: 1,
@@ -395,7 +395,7 @@ const initialState = {
       selected: false
     },
     {
-      nome: 'Salgadinhos/Tira_gosto',
+      nome: 'Salgadinhos',
       id: 56,
       idImagem: 2,
       idCategoria: 1,
