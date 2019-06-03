@@ -17,7 +17,11 @@ class Categoria extends Component {
     return (
       <FlatList
         data={this.state.itens}
-        renderItem={({ item }) => <Item id={item.id} imageId={item.idImagem} text={item.nome} />}
+        renderItem={({ item }) => {
+          if (item.nome.includes(this.props.filtro))
+            return <Item id={item.id} imageId={item.idImagem} text={item.nome} />
+          else return null
+        }}
         keyExtractor={(item) => item.id}
         style={{ marginLeft: 10 }}
         numColumns={2}

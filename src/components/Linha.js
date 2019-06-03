@@ -1,15 +1,27 @@
 import React, { Component } from 'react'
-import { FlatList, View, TouchableOpacity } from 'react-native'
+import { FlatList, View, TouchableOpacity, Text } from 'react-native'
 import { Dimensions } from 'react-native'
+import { corredorColors } from '../colors'
 
 import { connect } from 'react-redux'
 
 class Linha extends Component {
 
+  _renderNum = (item) => {
+    if (item.item.num && (this.props.corredores.includes(item.item.id))) {
+      return (
+        <View style={{ justifyContent: 'center', alignItems: 'center', color: '#000000' }} >
+          <Text>{item.item.id}</Text>
+        </View>
+      )
+    } else return null
+  }
+
+
   render() {
 
     const { width } = Dimensions.get('window')
-    const itemWidth = width * 0.9 / this.props.dado.length
+    const itemWidth = width * 0.9 / 36
     return (
       <FlatList
         contentContainerStyle={{ flexGrow: 1 }}
@@ -19,40 +31,50 @@ class Linha extends Component {
         keyExtractor={(item, index) => '' + index}
         renderItem={(item) => {
 
-          let text, backgroundColor
+          let backgroundColor, width
           let selected = false
           let corredor = false
           switch (item.item.tipo) {
             case 'entrada':
               backgroundColor = '#00FF00'
-              text = 'Entrada'
+              width = 6 * itemWidth
               break;
             case 'prateleira':
-              backgroundColor = '#E0E0E0'
+              backgroundColor = '#808080'
               text = item.item.categoria
               selected = this.props.itens[item.item.id].selected
+              width = itemWidth
               break;
             case 'corredor':
-              backgroundColor = '#FFFFFF'
-              text = 'Corredor ' + item.item.id
+              let id = item.item.id
+              if (this.props.corredores.includes(id)) {
+                if (id === 8) backgroundColor = '#AA11557f'
+                else backgroundColor = corredorColors[id % 4] + '7F'
+              }
+              else backgroundColor = '#E0E0E0'
               corredor = true
+              width = 4 * itemWidth
               break;
             default:
-              backgroundColor = '#000000'
+              width = 2 * itemWidth
+              if (item.item.id && this.props.corredores.includes(item.item.id)) backgroundColor = '#AA11557f'
+              else backgroundColor = '#E0E0E0'
               break;
           }
           if (corredor) {
             return <TouchableOpacity
               activeOpacity={0.7}
-              style={{ backgroundColor, width: itemWidth }}
+              style={{ backgroundColor, width }}
               onPress={() => {
                 this.props.atualizaCorredor(item.item.id)
-                // ToastAndroid.show(text, ToastAndroid.SHORT)
               }}
-            ></TouchableOpacity>
-          } else {
+            >
+              {this._renderNum(item)}
+            </TouchableOpacity>
+          }
+          else {
             if (selected) backgroundColor = '#FFA451'
-            return <View style={{ backgroundColor, width: itemWidth }} />
+            return <View style={{ backgroundColor, width }} />
           }
         }}
       />

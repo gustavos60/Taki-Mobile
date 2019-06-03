@@ -11,11 +11,11 @@ export default class HomeScreen extends Component {
     return (
       <View style={styles.container} >
         <View style={styles.searchContainer} >
-          <SearchBar placeholder='Busque uma loja' />
+          <SearchBar placeholder='Busque um Atacadão ou Supermercado' />
         </View>
         <Divider />
         <View style={styles.storesContainer} >
-          <Painel title='Lojas de Departamento' >
+          <Painel title='Atacadão' expanded = {false} >
             <TouchableOpacity
               style={styles.store}
               onPress={() => this.props.navigation.navigate('Main')}
