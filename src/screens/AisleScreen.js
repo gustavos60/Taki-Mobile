@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import Corredor from '../components/Corredor'
 import SearchBar from '../components/SearchBar'
 import Entrance from '../components/Entrance'
+import MapAndRoute from '../components/MapAndRoute';
 
 
 class AisleScreen extends Component {
@@ -13,7 +14,12 @@ class AisleScreen extends Component {
             <View style={styles.container}>
                 <View style={styles.searchContainer} >
                     <SearchBar placeholder='Busque um produto...' />
-                    <Text style={styles.storeText} >Arco Mix</Text>
+                    <MapAndRoute 
+                        store='Arco Mix'
+                        subtitle= {'Corredor: ' + corredor}
+                        onMapPress={() => this.props.navigation.navigate('Map')}
+                        onRoutePress={() => this.props.navigation.navigate('Route')}
+                    />
                 </View>
                 <View style={styles.image}>
                     <Corredor id={corredor}/>
