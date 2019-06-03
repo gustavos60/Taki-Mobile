@@ -16,7 +16,7 @@ class AisleScreen extends Component {
                     <SearchBar placeholder='Busque um produto...' />
                     <MapAndRoute 
                         store='Arco Mix'
-                        subtitle= {'Corredor: ' + corredor}
+                        subtitle= {'Corredor ' + corredor}
                         onMapPress={() => this.props.navigation.navigate('Map')}
                         onRoutePress={() => this.props.navigation.navigate('Route')}
                     />
