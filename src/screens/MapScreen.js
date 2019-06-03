@@ -5,7 +5,7 @@ import Map from '../components/Map'
 import Corredor from '../components/Corredor'
 import { connect } from 'react-redux'
 import { mapa } from '../mapa'
-
+import Entrance from '../components/Entrance'
 
 class MapScreen extends Component {
 
@@ -35,37 +35,24 @@ class MapScreen extends Component {
   }
 
   _renderMap = () => {
-    if (this.state.corredor === 0) {
-      return (
-        <Map corredores={this.state.corredores} atualizaCorredor={(id) => this.setState({ corredor: id })} />
-      )
-    } else {
-      return (
-        <Corredor id={this.state.corredor} />
-      )
+    if (this.state.corredor !== 0) {
+      this.props.navigation.navigate('Aisle', {
+        corredor: this.state.corredor  
+      })
     }
+    return (
+      <Map corredores={this.state.corredores} atualizaCorredor={(id) => this.setState({ corredor: id })} />
+    )
+
   }
 
   _buttonText = () => {
-    if (this.state.corredor === 0) {
       return (
         <View style={styles.welcome} >
           <Text style={{ color: '#FFA451', fontWeight: 'bold', fontSize: 16 }} >Bem-vindo ao Arco Mix!</Text>
           <Text style={{ fontSize: 12, textAlign: 'center' }} >Os itens de sua lista estão nos corredores coloridos. Toque no corredor para uma visão mais detalhada.</Text>
         </View>
       )
-    } else {
-      return (
-        <TouchableOpacity
-          activeOpacity={0.7}
-          style={styles.rota}
-          onPress={() => {
-            this.setState({ corredor: 0 })
-          }}>
-          <Text style={styles.routeText} >Retornar ao mapa</Text>
-        </TouchableOpacity>
-      )
-    }
   }
 
   render() {
@@ -76,12 +63,12 @@ class MapScreen extends Component {
           <Text style={styles.storeText} >Arco Mix</Text>
         </View>
         <View style={styles.container} >
-
           {this._buttonText()}
         </View>
         <View style={styles.image}>
-          {this._renderMap()}
+          {this._renderMap()}  
         </View>
+        <Entrance />
         <TouchableOpacity
           style={styles.indicator}
           onPress={() => this.props.navigation.navigate('List')}
@@ -177,5 +164,5 @@ const styles = StyleSheet.create({
     height: 50,
     justifyContent: 'center',
     alignItems: 'center'
-  }
+  },
 })
