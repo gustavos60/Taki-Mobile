@@ -336,7 +336,7 @@ export const mapa = [
 
   ]
 
-  , [ //linha 17
+  /*, [ //linha 17
     { "tipo": "corredor", "id": 0 },
     { "tipo": "corredor", "id": 0 },
     { "tipo": "corredor", "id": 0 },
@@ -346,5 +346,5 @@ export const mapa = [
     { "tipo": "corredor", "id": 0 },
     { "tipo": "offset" },
     { "tipo": "entrada" }
-  ]
+  ]*/
 ]
