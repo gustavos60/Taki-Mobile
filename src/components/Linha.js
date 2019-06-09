@@ -2,13 +2,12 @@ import React, { Component } from 'react'
 import { FlatList, View, TouchableOpacity, Text } from 'react-native'
 import { Dimensions } from 'react-native'
 import { corredorColors } from '../colors'
-
 import { connect } from 'react-redux'
 
 class Linha extends Component {
 
   _renderNum = (item) => {
-    if (item.item.num && (this.props.corredores.includes(item.item.id))) {
+    if (item.item.num) {
       return (
         <View style={{ justifyContent: 'center', alignItems: 'center', color: '#000000' }} >
           <Text>{item.item.id}</Text>
@@ -48,8 +47,7 @@ class Linha extends Component {
             case 'corredor':
               let id = item.item.id
               if (this.props.corredores.includes(id)) {
-                if (id === 8) backgroundColor = '#AA11557f'
-                else backgroundColor = corredorColors[id % 4] + '7F'
+                backgroundColor = 'rgb(204, 246, 197)'
               }
               else backgroundColor = '#E0E0E0'
               corredor = true
