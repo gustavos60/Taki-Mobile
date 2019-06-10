@@ -51,7 +51,7 @@ class MapScreen extends Component {
       return (
         <View style={styles.welcome} >
           <Text style={{ color: '#FFA451', fontWeight: 'bold', fontSize: 16 }} >Bem-vindo ao Arco Mix!</Text>
-          <Text style={{ fontSize: 12, textAlign: 'center' }} >Os itens de sua lista estão nos corredores coloridos. Toque no corredor para uma visão mais detalhada.</Text>
+          <Text style={{ fontSize: 12, textAlign: 'center' }} >Os itens de sua lista estão nos corredores destacados. Toque no corredor para uma visão mais detalhada.</Text>
         </View>
       )
   }
