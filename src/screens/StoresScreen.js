@@ -21,9 +21,12 @@ export default class HomeScreen extends Component {
               onPress={() => this.props.navigation.navigate('Main')}
             >
               <Image style={styles.image} resizeMode='center' source={require('../../assets/images/arcomix.png')} />
-              <Text >Arco-Mix</Text>
+              <View style={{flexDirection:'column'}}>
+                <Text style={styles.storeText}>Arco Mix</Text>
+                <Text style={styles.storeLocation}>Várzea</Text>
+              </View>
             </TouchableOpacity>
-          </Painel>
+          </Painel>git
         </View>
       </View>
     )
@@ -47,17 +50,27 @@ const styles = StyleSheet.create({
     flex: 5,
   },
   store: {
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
+    justifyContent: 'flex-start',
     flexDirection: 'row',
+    alignItems: 'center',
     width: '90%',
     height: 70,
-    elevation: 5,
+    borderWidth: 0.7,
+    borderColor: 'grey',
+    elevation: 1,
     marginTop: 10,
     borderRadius: 10,
+  },
+  storeText: {
+    fontSize: 16,
+    fontWeight: 'bold'
+  },
+  storeLocation: {
+    fontSize: 12,
   },
   image: {
     height: 60,
     width: 60,
+    margin: '5%'
   }
 })
