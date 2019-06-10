@@ -55,7 +55,7 @@ class Linha extends Component {
               break;
             default:
               width = 2 * itemWidth
-              if (item.item.id && this.props.corredores.includes(item.item.id)) backgroundColor = '#AA11557f'
+              if (item.item.id && this.props.corredores.includes(item.item.id)) backgroundColor = 'rgb(204, 246, 197)'
               else backgroundColor = '#E0E0E0'
               break;
           }
