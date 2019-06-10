@@ -26,7 +26,7 @@ export default class HomeScreen extends Component {
                 <Text style={styles.storeLocation}>Várzea</Text>
               </View>
             </TouchableOpacity>
-          </Painel>git
+          </Painel>
         </View>
       </View>
     )
