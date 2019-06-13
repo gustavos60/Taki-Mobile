@@ -14,20 +14,20 @@ export default class Painel extends Component {
 
     this.state = {
       title: props.title,
-      expanded: props.expanded,
+      collapsed: props.collapsed,
     }
   }
 
   toggle() {
     this.setState({
-      expanded: !this.state.expanded
+      collapsed: !this.state.collapsed
     })
   }
 
   render() {
     let icon = this.icons['up']
 
-    if (this.state.expanded) {
+    if (this.state.collapsed) {
       icon = this.icons['down']
     }
 
@@ -43,7 +43,7 @@ export default class Painel extends Component {
           </TouchableOpacity>
 
         </View>
-        <Collapsible style={styles.body} collapsed={this.state.expanded} >
+        <Collapsible style={styles.body} collapsed={this.state.collapsed} >
           {this.props.children}
         </Collapsible>
       </View>
