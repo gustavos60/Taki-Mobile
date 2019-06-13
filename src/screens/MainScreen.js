@@ -31,9 +31,9 @@ class MainScreen extends Component {
         <Divider />
         <View style={styles.categoriasContainer} >
           <ScrollView style={{ flex: 5 }} >
-            <Painel title='Escritorio' expanded={false} children={<Categoria filtro={this.state.busca} id={1} />} />
+            <Painel title='Escritorio' collapsed={true} children={<Categoria filtro={this.state.busca} id={1} />} />
             <Divider />
-            <Painel title='Festas' expanded={false} children={<Categoria filtro={this.state.busca} id={2} />} />
+            <Painel title='Festas' collapsed={true} children={<Categoria filtro={this.state.busca} id={2} />} />
             <Divider />
           </ScrollView>
         </View>
