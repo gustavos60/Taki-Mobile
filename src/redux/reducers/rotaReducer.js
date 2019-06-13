@@ -7,10 +7,12 @@ const initialState = {
 
 export const rotaReducer = (state=initialState, action) => {
     let indAtual = state.indAtual
-    let sizeRota = state.rotaArray.length
+    let sizeRota = state.rotaArray
     let prevInd
+    let nextInd
+
     switch (action.type) {
-        case PREV_ROTA:
+        case PREV_ROTA: {
             if (indAtual - 1 > 0) {
                 prevInd = indAtual - 1
             }
@@ -21,8 +23,9 @@ export const rotaReducer = (state=initialState, action) => {
                 rotaArray: state.rotaArray,
                 indAtual: prevInd
             }
+        }
         
-        case NEXT_ROTA:
+        case NEXT_ROTA:{
             if (indAtual+1 < sizeRota) {
                 nextInd = indAtual + 1
             }
@@ -33,13 +36,16 @@ export const rotaReducer = (state=initialState, action) => {
                 rotaArray: state.rotaArray,
                 indAtual: nextInd
             }
+        }
 
-        case ATUALIZA_ROTA:
+        case ATUALIZA_ROTA: {
             return {
-                rotaArray: action.rotas,
-                indAtual: 0
+                rotaArray: action.aisleArray,
+                indAtual: indAtual
             }
+        }
 
-        default: return state
+        default:
+            return state
     }
 }
