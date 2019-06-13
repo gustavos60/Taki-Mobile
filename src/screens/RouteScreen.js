@@ -6,13 +6,15 @@ import Corredor from '../components/Corredor';
 import Entrance from '../components/Entrance'
 import { connect } from 'react-redux';
 import MapAndRoute from '../components/MapAndRoute';
+import { mapa } from '../mapa'
+import { atualizaRota } from '../redux/actions/rotaActions';
 
 class RouteScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          corredor: 2,
-          actualIndex: 0
+          actualAisle: this.props.indAtual,
+          aisleArray: this.props.rotaArray
         };
       }
 
@@ -74,7 +76,7 @@ class RouteScreen extends Component {
       }
 
       _renderAisle() {
-        if (this.state.corredor == null) {
+        if (this.state.aisleArray == null) {
           return (
             <View style={styles.emptyList}>
               <Text style={styles.emptyListText}> Você não possui itens na sua lista. Adicione itens na sua lista clicando no carrinho.</Text>
@@ -86,7 +88,7 @@ class RouteScreen extends Component {
             <View style={styles.aisleAndArrows}>
               {this._renderLeftArrow()}
               <View style={styles.aisle}>
-                <Corredor id={this.state.corredor}/>
+                <Corredor id={this.state.actualAisle}/>
               </View>
               {this._renderRightArrow()}
             </View>
@@ -118,15 +120,27 @@ class RouteScreen extends Component {
           </TouchableOpacity>
         </View>
           
-        );
-      }
+          );
+        }
+      
 }
 
 const mapStateToProps = (store) => ({
-  total: store.itemState.totalSelected
+  rotaArray: store.rotaState.rotaArray,
+  indAtual: store.rotaState.indAtual,
+  total: store.itemState.totalSelected,
+  itens: store.itemState.itens
 })
 
-export default connect(mapStateToProps, null)(RouteScreen)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    nextRota: () => dispatch(nextRota()),
+    prevRota: () => dispatch(prevRota()),
+    atualizaRota: (array) => dispatch(atualizaRota(array))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RouteScreen)
 
 const styles = StyleSheet.create({
     container: {

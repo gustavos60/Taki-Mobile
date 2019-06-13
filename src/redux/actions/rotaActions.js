@@ -15,6 +15,6 @@ export const prevRota = () => {
 export const atualizaRota = (array) => {
   return {
     type: ATUALIZA_ROTA,
-    rotas: array
+    aisleArray: array
   }
 }

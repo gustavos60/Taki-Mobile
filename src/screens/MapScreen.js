@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native'
 import SearchBar from '../components/SearchBar'
 import Map from '../components/Map'
 import { connect } from 'react-redux'
+import { atualizaRota } from '../redux/actions/rotaActions'
 import { mapa } from '../mapa'
 import Entrance from '../components/Entrance'
 import MapAndRoute from '../components/MapAndRoute';
@@ -32,6 +33,7 @@ class MapScreen extends Component {
         }
       })
     })
+    this.props.atualizaRota(corredores.filter(item => item > 0).sort())
     this.setState({ corredores })
   }
 
@@ -88,10 +90,17 @@ class MapScreen extends Component {
 }
 const mapStateToProps = (store) => ({
   total: store.itemState.totalSelected,
-  itens: store.itemState.itens
+  itens: store.itemState.itens,
+  rotaArray: store.rotaState.rotaArray
 })
 
-export default connect(mapStateToProps, null)(MapScreen)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    atualizaRota: (array) => dispatch(atualizaRota(array))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MapScreen)
 
 const styles = StyleSheet.create({
   container: {
