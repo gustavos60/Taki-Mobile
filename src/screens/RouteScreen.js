@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import SearchBar from '../components/SearchBar';
+import Corredor from '../components/Corredor';
+import Entrance from '../components/Entrance'
 import { connect } from 'react-redux';
 import MapAndRoute from '../components/MapAndRoute';
 
@@ -8,8 +11,87 @@ class RouteScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          
+          corredor: 2,
+          actualIndex: 0
         };
+      }
+
+      _renderLeftArrow() {
+        if (this.state.actualIndex > 0) {
+          return (
+            <View>
+              <TouchableOpacity
+                onPress={() => {}}
+              >
+                <Icon 
+                  name='chevron-left'
+                  size={50}
+                  color='#DA6711'
+                />
+              </TouchableOpacity>
+            </View>
+          )
+        } else {
+          return (
+            <View>
+              <Icon 
+                name='chevron-left'
+                size={50}
+                color='lightgrey'
+              />
+            </View>
+          )
+        }
+
+      }
+
+      _renderRightArrow() {
+        if (this.state.actualIndex != null) {
+          return (
+            <View>
+              <TouchableOpacity
+                onPress={() => {}}
+              >
+                <Icon 
+                  name='chevron-right'
+                  size={50}
+                  color='#DA6711'
+                />
+              </TouchableOpacity>
+            </View>
+          )
+        } else {
+          return (
+            <View>
+              <Icon 
+                name='chevron-right'
+                size={50}
+                color='lightgrey'
+              />
+            </View>
+          )
+        }
+      }
+
+      _renderAisle() {
+        if (this.state.corredor == null) {
+          return (
+            <View style={styles.emptyList}>
+              <Text style={styles.emptyListText}> Você não possui itens na sua lista. Adicione itens na sua lista clicando no carrinho.</Text>
+            </View>
+          )
+          
+        } else {
+          return (
+            <View style={styles.aisleAndArrows}>
+              {this._renderLeftArrow()}
+              <View style={styles.aisle}>
+                <Corredor id={this.state.corredor}/>
+              </View>
+              {this._renderRightArrow()}
+            </View>
+          )
+        }
       }
     
       render() {
@@ -24,8 +106,9 @@ class RouteScreen extends Component {
               />
             </View>
             <View style={styles.image}>
-              
+              {this._renderAisle()}
             </View>
+            <Entrance />
             <TouchableOpacity
               style={styles.indicator}
               onPress={() => this.props.navigation.navigate('List')}
@@ -68,15 +151,34 @@ const styles = StyleSheet.create({
       alignItems: 'center',
     },
     image: {
+      justifyContent: 'center', 
       flex: 3,
-      margin: 10,
-      width: '90%'
+      width: '100%',
+      marginTop: '3%'
     },
     storeText: {
       color: 'white',
       fontWeight: 'bold',
       fontSize: 15,
       marginTop: 10
+    },
+    emptyList: {
+      alignItems: 'center'
+    },
+    emptyListText: {
+      fontSize: 16,
+      color: '#FFA451',
+      fontWeight: 'bold',
+      textAlign: 'center',
+      width: '80%',
+    },
+    aisleAndArrows: {
+      flex: 1,
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    aisle: {
+      flex: 1,
     },
 })
 
