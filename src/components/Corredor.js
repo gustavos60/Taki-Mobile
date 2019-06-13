@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
     flex: 3,
   },
   prateleira: {
-    width: 30,
+    width: '20%',
     height: '100%',
     borderWidth: 2,
     borderColor: '#000000'
@@ -191,10 +191,12 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   indicador: {
-    width: 90,
+    flex: 1,
     backgroundColor: '#47B036',
     borderRadius: 20,
     textAlign: 'center',
-    color: '#FFFFFF'
+    color: '#FFFFFF',
+    marginLeft: '2%',
+    marginRight: '2%'
   }
 })
