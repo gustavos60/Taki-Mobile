@@ -6,8 +6,7 @@ import Corredor from '../components/Corredor';
 import Entrance from '../components/Entrance'
 import { connect } from 'react-redux';
 import MapAndRoute from '../components/MapAndRoute';
-import { mapa } from '../mapa'
-import { atualizaRota } from '../redux/actions/rotaActions';
+import { atualizaRota, nextRota, prevRota } from '../redux/actions/rotaActions';
 
 class RouteScreen extends Component {
     constructor(props) {
@@ -19,11 +18,14 @@ class RouteScreen extends Component {
       }
 
       _renderLeftArrow() {
-        if (this.state.actualIndex > 0) {
+        if (this.props.indAtual > 0) {
           return (
             <View>
               <TouchableOpacity
-                onPress={() => {}}
+                onPress={() => {
+                  this.props.prevRota()
+                  this.setState({actualAisle: this.props.indAtual})
+                }}
               >
                 <Icon 
                   name='chevron-left'
@@ -48,11 +50,16 @@ class RouteScreen extends Component {
       }
 
       _renderRightArrow() {
-        if (this.state.actualIndex != null) {
+        let arraySize = this.props.rotaArray.length
+
+        if (arraySize > 1 && this.props.indAtual < arraySize - 1) {
           return (
             <View>
               <TouchableOpacity
-                onPress={() => {}}
+                onPress={() => {
+                  this.props.nextRota()
+                  this.setState({actualAisle: this.props.indAtual})
+                }}
               >
                 <Icon 
                   name='chevron-right'
@@ -88,15 +95,18 @@ class RouteScreen extends Component {
             <View style={styles.aisleAndArrows}>
               {this._renderLeftArrow()}
               <View style={styles.aisle}>
-                <Corredor id={this.state.actualAisle}/>
+                <Corredor id={this.props.rotaArray[this.props.indAtual]}/>
               </View>
               {this._renderRightArrow()}
             </View>
           )
         }
       }
-    
+
       render() {
+        console.warn(this.state.aisleArray[this.state.actualAisle])
+        console.warn('indAtual(props): ' + this.props.indAtual)
+        console.warn('actualAisle(state): ' + this.state.actualAisle)
         return (
         <View style={styles.container}>
             <View style={styles.searchContainer} >
