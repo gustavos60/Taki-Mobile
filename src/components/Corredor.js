@@ -47,7 +47,7 @@ class Corredor extends Component {
     return corredor
   }
 
-  componentDidMount() {
+  atualizaCorredor = () => {
     let corredor = []
     let ladoDireito = []
     let ladoEsquerdo = []
@@ -78,7 +78,14 @@ class Corredor extends Component {
       totalDireita,
       color: corredorColors[this.props.id % 4]
     })
+  }
 
+  componentDidUpdate = (prevProps) => {
+    if (prevProps.id !== this.props.id) this.atualizaCorredor()
+  }
+
+  componentDidMount() {
+    this.atualizaCorredor()
   }
 
   _renderNumeroCorredor = () => {
