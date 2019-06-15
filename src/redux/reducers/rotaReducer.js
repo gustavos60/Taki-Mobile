@@ -7,13 +7,13 @@ const initialState = {
 
 export const rotaReducer = (state=initialState, action) => {
     let indAtual = state.indAtual
-    let sizeRota = state.rotaArray
+    let sizeRota = state.rotaArray.length
     let prevInd
     let nextInd
 
     switch (action.type) {
         case PREV_ROTA: {
-            if (indAtual - 1 > 0) {
+            if (indAtual > 0) {
                 prevInd = indAtual - 1
             }
             else {
