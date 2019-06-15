@@ -17,7 +17,7 @@ class RouteScreen extends Component {
         };
       }
 
-      _renderLeftArrow() {
+      _renderLeftArrow = () => {
         if (this.props.indAtual > 0) {
           return (
             <View>
@@ -49,7 +49,7 @@ class RouteScreen extends Component {
 
       }
 
-      _renderRightArrow() {
+      _renderRightArrow = () => {
         let arraySize = this.props.rotaArray.length
 
         if (arraySize > 1 && this.props.indAtual < arraySize - 1) {
@@ -82,7 +82,7 @@ class RouteScreen extends Component {
         }
       }
 
-      _renderAisle() {
+      _renderAisle = () => {
         if (this.state.aisleArray == null) {
           return (
             <View style={styles.emptyList}>
