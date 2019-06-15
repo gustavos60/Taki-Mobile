@@ -11,7 +11,7 @@ const StackNavigator = createStackNavigator({
   Route: {screen: RouteScreen, navigationOptions: {header: null}}
 }, {
     headerMode: 'screen',
-    initialRouteName: 'Store'
+    initialRouteName: 'Home'
   })
 
 export default createAppContainer(StackNavigator)
