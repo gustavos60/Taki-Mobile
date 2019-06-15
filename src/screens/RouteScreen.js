@@ -174,6 +174,7 @@ class RouteScreen extends Component {
           <SearchBar placeholder='Busque um produto...' />
           <MapAndRoute
             store='Arco Mix'
+            subtitle={'Corredor ' + this.props.rotaArray[this.props.indAtual]}
             onMapPress={() => this.props.navigation.navigate('Map')}
             onRoutePress={() => this.props.navigation.navigate('Route')}
           />
