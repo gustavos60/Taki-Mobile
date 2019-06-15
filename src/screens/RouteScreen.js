@@ -104,9 +104,6 @@ class RouteScreen extends Component {
       }
 
       render() {
-        console.warn(this.state.aisleArray[this.state.actualAisle])
-        console.warn('indAtual(props): ' + this.props.indAtual)
-        console.warn('actualAisle(state): ' + this.state.actualAisle)
         return (
         <View style={styles.container}>
             <View style={styles.searchContainer} >
