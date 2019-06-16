@@ -14,7 +14,6 @@ class MapScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      corredor: 0,
       corredores: []
     }
   }
@@ -38,24 +37,22 @@ class MapScreen extends Component {
   }
 
   _renderMap = () => {
-    if (this.state.corredor !== 0) {
-      this.props.navigation.navigate('Aisle', {
-        corredor: this.state.corredor  
-      })
-    }
     return (
-      <Map corredores={this.state.corredores} atualizaCorredor={(id) => this.setState({ corredor: id })} />
+      <Map
+        corredores={this.state.corredores}
+        atualizaCorredor={(id) => this.props.navigation.navigate('Aisle', {
+          corredor: id
+        })} />
     )
-
   }
 
   _buttonText = () => {
-      return (
-        <View style={styles.welcome} >
-          <Text style={{ color: '#FFA451', fontWeight: 'bold', fontSize: 16 }} >Bem-vindo ao Arco Mix!</Text>
-          <Text style={{ fontSize: 12, textAlign: 'center' }} >Os itens de sua lista estão nos corredores destacados. Toque no corredor para uma visão mais detalhada.</Text>
-        </View>
-      )
+    return (
+      <View style={styles.welcome} >
+        <Text style={{ color: '#FFA451', fontWeight: 'bold', fontSize: 16 }} >Bem-vindo ao Arco Mix!</Text>
+        <Text style={{ fontSize: 12, textAlign: 'center' }} >Os itens de sua lista estão nos corredores destacados. Toque no corredor para uma visão mais detalhada.</Text>
+      </View>
+    )
   }
 
   render() {
@@ -66,15 +63,15 @@ class MapScreen extends Component {
           <MapAndRoute
             store='Arco Mix'
             subtitle='Mapa Principal'
-            onMapPress={() => {this.props.navigation.navigate('Map')}}
-            onRoutePress={() => {this.props.navigation.navigate('Route')}}
+            onMapPress={() => { this.props.navigation.navigate('Map') }}
+            onRoutePress={() => { this.props.navigation.navigate('Route') }}
           />
         </View>
         <View style={styles.container} >
           {this._buttonText()}
         </View>
         <View style={styles.image}>
-          {this._renderMap()}  
+          {this._renderMap()}
         </View>
         <Entrance />
         <TouchableOpacity
