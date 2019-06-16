@@ -15,17 +15,18 @@ export default class HomeScreen extends Component {
           color='#3270f0'
           onPress={() => this.props.navigation.navigate('Store')} 
         />
-        <LoginButton 
+      </LinearGradient>
+    )
+  }
+}
+/*
+<LoginButton 
           text="Continuar com Facebook" 
           color='#3b5998'
           iconName='facebook'
           onPress={() => this.props.navigation.navigate('Store')} 
         />
-      </LinearGradient>
-    )
-  }
-}
-
+*/
 const styles = StyleSheet.create({
   container: {
     flex: 1,
