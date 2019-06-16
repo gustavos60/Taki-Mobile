@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, FlatList, Text } from 'react-native'
+import { View, StyleSheet, FlatList, Text, TouchableOpacity } from 'react-native'
 import { mapa } from '../mapa'
 import { connect } from 'react-redux'
 import { corredorColors } from '../colors'
+import { toggleConfirmation } from '../redux/actions/itemActions'
 
 class Corredor extends Component {
 
@@ -94,8 +95,57 @@ class Corredor extends Component {
     return <Text style={{ color, fontSize: 30, fontWeight: 'bold' }} >{this.props.id}</Text>
   }
 
-  render() {
+  _renderLado = (lado, fracao) => {
+    const esquerda = (lado === 'esquerdo')
+    const style = esquerda ? styles.esquerda : styles.direita
+    const data = esquerda ? this.state.ladoEsquerdo : this.state.ladoDireito
+    return (
+      <View style={style}>
+        <FlatList
+          data={data}
+          keyExtractor={(item, index) => '' + index}
+          style={{ flex: 1 }}
+          renderItem={({ item }) => {
+            let height = item.total * fracao
+            let backgroundColor = '#FFFFFF'
+            let selected = this.props.itens[item.id].selected
+            let nome = ''
+            let tag = <View></View>
+            if (selected) {
+              backgroundColor = '#FFA451'
+              let indicadorColor = (this.props.itens[item.id].confirmed) ? '#47B036' : '#909090'
+              nome = item.nome
+              tag = (
+                <TouchableOpacity
+                  activeOpacity={0.7}
+                  style={[styles.indicador, { backgroundColor: indicadorColor }]}
+                  onPress={() => this.props.toggleConfirmation(item.id)} >
+                  <Text style={{ textAlign: 'center', color: '#FFFFFF' }} numberOfLines={2} >{nome}</Text>
+                </TouchableOpacity>
+              )
+            }
+            if (esquerda) {
+              return (
+                <View style={[styles.lado, { height }]} >
+                  {tag}
+                  <View style={[styles.prateleira, { backgroundColor }]} />
+                </View>
+              )
+            } else {
+              return (
+                <View style={[styles.lado, { height }]} >
+                  <View style={[styles.prateleira, { backgroundColor }]} />
+                  {tag}
+                </View>
+              )
+            }
+          }}
+        />
+      </View>
+    )
+  }
 
+  render() {
     let fracaoDireita = this.state.height / this.state.totalDireita
     let fracaoEsquerda = this.state.height / this.state.totalEsquerda
     return (
@@ -103,59 +153,11 @@ class Corredor extends Component {
         let { height } = event.nativeEvent.layout
         this.setState({ height })
       }}>
-        <View style={styles.esquerda}>
-          <FlatList
-            data={this.state.ladoEsquerdo}
-            keyExtractor={(item, index) => '' + index}
-            style={{ flex: 1 }}
-            renderItem={(item) => {
-              let height = item.item.total * fracaoEsquerda
-              let backgroundColor = '#FFFFFF'
-              let selected = this.props.itens[item.item.id].selected
-              let nome = ''
-              let tag = <View></View>
-              if (selected) {
-                backgroundColor = '#FFA451'
-                nome = item.item.nome
-                tag = <Text style={styles.indicador} numberOfLines={2} >{nome}</Text>
-              }
-              return (
-                <View style={[styles.lado, { height }]} >
-                  {tag}
-                  <View style={[styles.prateleira, { backgroundColor }]} />
-                </View>
-              )
-            }}
-          />
-        </View>
+        {this._renderLado('esquerdo', fracaoEsquerda)}
         <View style={styles.meio}>
           {this._renderNumeroCorredor()}
         </View>
-        <View style={styles.direita}>
-          <FlatList
-            data={this.state.ladoDireito}
-            keyExtractor={(item, index) => '' + index}
-            style={{ flex: 1 }}
-            renderItem={(item) => {
-              let height = item.item.total * fracaoDireita
-              let backgroundColor = '#FFFFFF'
-              let selected = this.props.itens[item.item.id].selected
-              let nome = ''
-              let tag = <View></View>
-              if (selected) {
-                backgroundColor = '#FFA451'
-                nome = item.item.nome
-                tag = <Text style={styles.indicador} numberOfLines={2} >{nome}</Text>
-              }
-              return (
-                <View style={[styles.lado, { height }]} >
-                  <View style={[styles.prateleira, { backgroundColor }]} />
-                  {tag}
-                </View>
-              )
-            }}
-          />
-        </View>
+        {this._renderLado('direito', fracaoDireita)}
       </View>
     )
   }
@@ -165,7 +167,13 @@ const mapStateToProps = (store) => ({
   itens: store.itemState.itens
 })
 
-export default connect(mapStateToProps, null)(Corredor)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    toggleConfirmation: (id) => dispatch(toggleConfirmation(id))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Corredor)
 
 const styles = StyleSheet.create({
   divider: {
@@ -198,11 +206,11 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   indicador: {
-    flex: 1,
-    backgroundColor: '#47B036',
     borderRadius: 20,
-    textAlign: 'center',
-    color: '#FFFFFF',
+    height: 40,
+    width: 75,
+    justifyContent: 'center',
+    alignItems: 'center',
     marginLeft: '2%',
     marginRight: '2%'
   }
