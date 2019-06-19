@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, TouchableOpacity, Image, Text } from 'react-native'
 import { connect } from 'react-redux'
-import { toggleSelected } from '../redux/actions/itemActions'
+import { toggleSelected, toggleConfirmation } from '../redux/actions/itemActions'
 import { images } from '../images'
 
 class Item extends Component {
@@ -15,6 +15,11 @@ class Item extends Component {
 
   click() {
     this.props.toggleSelected(this.props.id)
+    this.props.itens.forEach(element => {
+      if (element.id === this.props.id && element.confirmed) {
+        this.props.toggleConfirmation(this.props.id)
+      }
+    });
   }
 
   render() {
@@ -37,7 +42,8 @@ class Item extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toggleSelected: (id) => dispatch(toggleSelected(id))
+    toggleSelected: (id) => dispatch(toggleSelected(id)),
+    toggleConfirmation: (id) => dispatch(toggleConfirmation(id))
   }
 }
 
