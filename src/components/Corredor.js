@@ -136,13 +136,15 @@ class Corredor extends Component {
           renderItem={({ item }) => {
             let height = item.total * fracao
             let backgroundColor = '#FFFFFF'
-            let selected = this.props.itens[item.id].selected
+            let itemRedux = this.props.itens.find(obj => obj.id === item.id)
+            let selected = false
+            if (itemRedux) selected = itemRedux.selected
             let tag = <View></View>
             let borderWidth = (item.id === 0) ? 0 : 2
             let borderColor = (item.id === 0) ? "#FFF" : "#000"
             if (selected) {
               backgroundColor = '#FFA451'
-              let indicadorColor = (this.props.itens[item.id].confirmed) ? '#47B036' : '#909090'
+              let indicadorColor = (itemRedux && itemRedux.confirmed) ? '#47B036' : '#909090'
               let indicadorHeight = (height > 40) ? 40 : height
               tag = (
                 <TouchableOpacity
@@ -188,13 +190,15 @@ class Corredor extends Component {
             let height = 30
             let backgroundColor = '#FFF'
             if (item.nome === 'Banheiro') backgroundColor = '#afeeee' 
-            let selected = this.props.itens[item.id].selected
+            let itemRedux = this.props.itens.find(obj => obj.id === item.id)
+            let selected = false
+            if (itemRedux) selected = itemRedux.selected
             let tag = <View style={{ height: 30 }} ></View>
             let borderWidth = (item.id === 0) ? 0 : 2
             let borderColor = (item.id === 0) ? "#FFF" : "#000"
             if (selected) {
               backgroundColor = '#FFA451'
-              let indicadorColor = (this.props.itens[item.id].confirmed) ? '#47B036' : '#909090'
+              let indicadorColor = (itemRedux && itemRedux.confirmed) ? '#47B036' : '#909090'
               let indicadorWidth = (width > 75) ? 75 : width
               tag = (
                 <TouchableOpacity

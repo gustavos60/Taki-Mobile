@@ -23,7 +23,8 @@ class Item extends Component {
     let image = this.state.images[id]
 
     let backgroundColor = 'white'
-    if (this.props.itens[this.props.id].selected) backgroundColor = '#FFC2D8'
+    let item = this.props.itens.find(obj => obj.id === this.props.id)
+    if (item && item.selected) backgroundColor = '#FFC2D8'
     let boxStyle = StyleSheet.flatten([styles.box, { backgroundColor: backgroundColor }])
 
     return (

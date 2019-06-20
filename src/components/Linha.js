@@ -42,7 +42,8 @@ class Linha extends Component {
               if(item.item.categoria === 'Banheiro') backgroundColor = '#afeeee'
               else backgroundColor = '#808080'
               text = item.item.categoria
-              selected = this.props.itens[item.item.id].selected
+              let itemRedux = this.props.itens.find(obj => obj.id === item.item.id)
+              selected = (itemRedux && itemRedux.selected)
               width = itemWidth
               break;
             case 'corredor':
