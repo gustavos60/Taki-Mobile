@@ -29,7 +29,7 @@ class Item extends Component {
     return (
       <TouchableOpacity style={boxStyle} onPress={() => this.click()}  >
         <Image style={styles.image} resizeMode='center' source={image} />
-        <Text>{this.props.text}</Text>
+        <Text style={{textAlign: 'center'}} >{this.props.text}</Text>
       </TouchableOpacity>
     )
   }
