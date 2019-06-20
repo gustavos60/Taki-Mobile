@@ -10,10 +10,22 @@ export const mapa = [
     { "tipo": "prateleira", "categoria": "Frigorífico", "idcorredor": 8, "id": 40 },
     { "tipo": "prateleira", "categoria": "Frigorífico", "idcorredor": 8, "id": 40 },
     { "tipo": "prateleira", "categoria": "Frigorífico", "idcorredor": 8, "id": 40 },
-    { "tipo": "corredor", "id": 0 },
-    { "tipo": "corredor", "id": 0 },
-    { "tipo": "corredor", "id": 0 },
-    { "tipo": "corredor", "id": 0 },
+    { "tipo": "prateleira", "categoria": "Banheiro", "idcorredor": 8, "id": 0 },
+    { "tipo": "prateleira", "categoria": "Banheiro", "idcorredor": 8, "id": 0 },
+    { "tipo": "prateleira", "categoria": "Banheiro", "idcorredor": 8, "id": 0 },
+    { "tipo": "prateleira", "categoria": "Banheiro", "idcorredor": 8, "id": 0 },
+    { "tipo": "prateleira", "categoria": "Banheiro", "idcorredor": 8, "id": 0 },
+    { "tipo": "prateleira", "categoria": "Banheiro", "idcorredor": 8, "id": 0 },
+    { "tipo": "prateleira", "categoria": "Banheiro", "idcorredor": 8, "id": 0 },
+    { "tipo": "prateleira", "categoria": "Banheiro", "idcorredor": 8, "id": 0 },
+    { "tipo": "prateleira", "categoria": "Banheiro", "idcorredor": 8, "id": 0 },
+    { "tipo": "prateleira", "categoria": "Banheiro", "idcorredor": 8, "id": 0 },
+    { "tipo": "prateleira", "categoria": "Banheiro", "idcorredor": 8, "id": 0 },
+    { "tipo": "prateleira", "categoria": "Banheiro", "idcorredor": 8, "id": 0 },
+    { "tipo": "prateleira", "categoria": "Banheiro", "idcorredor": 8, "id": 0 },
+    { "tipo": "prateleira", "categoria": "Banheiro", "idcorredor": 8, "id": 0 },
+    { "tipo": "prateleira", "categoria": "Banheiro", "idcorredor": 8, "id": 0 },
+    { "tipo": "prateleira", "categoria": "Banheiro", "idcorredor": 8, "id": 0 },
     { "tipo": "prateleira", "categoria": "Padaria", "idcorredor": 8, "id": 16 },
     { "tipo": "prateleira", "categoria": "Padaria", "idcorredor": 8, "id": 16 },
     { "tipo": "prateleira", "categoria": "Padaria", "idcorredor": 8, "id": 16 },
@@ -23,7 +35,7 @@ export const mapa = [
     { "tipo": "prateleira", "categoria": "Padaria", "idcorredor": 8, "id": 16 },
     { "tipo": "prateleira", "categoria": "Padaria", "idcorredor": 8, "id": 16 },
     { "tipo": "prateleira", "categoria": "Padaria", "idcorredor": 8, "id": 16 },
-    { "tipo": "prateleira", "categoria": "Hortifruti", "idcorredor": 8, "id": 15 }
+    { "tipo": "prateleira", "categoria": "Padaria", "idcorredor": 8, "id": 16 }
   ]
 
   , [ //linha 2-> Numeração ficou boa aqui?
