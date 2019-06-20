@@ -39,7 +39,8 @@ class Linha extends Component {
               width = 6 * itemWidth
               break;
             case 'prateleira':
-              backgroundColor = '#808080'
+              if(item.item.categoria === 'Banheiro') backgroundColor = '#afeeee'
+              else backgroundColor = '#808080'
               text = item.item.categoria
               selected = this.props.itens[item.item.id].selected
               width = itemWidth

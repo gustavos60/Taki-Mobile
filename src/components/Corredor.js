@@ -187,6 +187,7 @@ class Corredor extends Component {
             let width = item.total * fracao
             let height = 30
             let backgroundColor = '#FFF'
+            if (item.nome === 'Banheiro') backgroundColor = '#afeeee' 
             let selected = this.props.itens[item.id].selected
             let tag = <View style={{ height: 30 }} ></View>
             let borderWidth = (item.id === 0) ? 0 : 2
