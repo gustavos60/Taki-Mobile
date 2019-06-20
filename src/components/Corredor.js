@@ -175,9 +175,9 @@ class Corredor extends Component {
   }
 
   _renderHorizontal = () => {
-    let fracao = this.state.width / this.state.totalEsquerda
+    let fracao = (this.state.width) / this.state.totalEsquerda
     return (
-      <View style={{ height: 90, marginTop: 100 }} >
+      <View style={{ height: 90, margin: 0, marginTop: 100 }} >
         <FlatList
           horizontal={true}
           data={this.state.ladoEsquerdo}
@@ -195,11 +195,11 @@ class Corredor extends Component {
             if (selected) {
               backgroundColor = '#FFA451'
               let indicadorColor = (this.props.itens[item.id].confirmed) ? '#47B036' : '#909090'
-              let indicadorHeight = 30
+              let indicadorWidth = (width > 75) ? 75 : width
               tag = (
                 <TouchableOpacity
                   activeOpacity={0.7}
-                  style={[styles.indicador, { backgroundColor: indicadorColor, height: indicadorHeight, width: 80, marginBottom: 5 }]}
+                  style={[styles.indicador, { backgroundColor: indicadorColor, width: indicadorWidth, height: 30}]}
                   onPress={() => { this.props.toggleConfirmation(item.id) }} >
                   <Text style={{ textAlign: 'center', color: '#FFFFFF' }} numberOfLines={1} >{item.nome}</Text>
                 </TouchableOpacity>
@@ -225,8 +225,8 @@ class Corredor extends Component {
     if (this.state.corredorVertical) {
       return (
         <View style={styles.horizontalDivider} onLayout={(event) => {
-          let { height } = event.nativeEvent.layout
-          this.setState({ height })
+          let { width, height } = event.nativeEvent.layout
+          this.setState({ width, height })
         }}>
           {this._renderLado('esquerdo', fracaoEsquerda)}
           <View style={styles.numeroVertical}>
@@ -240,8 +240,8 @@ class Corredor extends Component {
     else {
       return (
         <View style={styles.verticalDivider} onLayout={(event) => {
-          let { width } = event.nativeEvent.layout
-          this.setState({ width })
+          let { width, height } = event.nativeEvent.layout
+          this.setState({ width, height })
         }}>
           {this._renderHorizontal()}
           <View style={styles.numeroHorizontal}>
