@@ -26,6 +26,26 @@ export default class HomeScreen extends Component {
                 <Text style={styles.storeLocation}>Várzea</Text>
               </View>
             </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.store}
+              onPress={() => this.props.navigation.navigate('Main')}
+            >
+              <Image style={styles.image} resizeMode='center' source={require('../../assets/images/atacadao1.png')} />
+              <View style={{flexDirection:'column'}}>
+                <Text style={styles.storeText}>Atacadão</Text>
+                <Text style={styles.storeLocation}>Boa Viagem</Text>
+              </View>
+            </TouchableOpacity>            
+            <TouchableOpacity
+              style={styles.store}
+              onPress={() => this.props.navigation.navigate('Main')}
+            >
+              <Image style={styles.image} resizeMode='center' source={require('../../assets/images/atacadao.png')} />
+              <View style={{flexDirection:'column'}}>
+                <Text style={styles.storeText}>Atacadão dos Presentes</Text>
+                <Text style={styles.storeLocation}>Imbiribeira</Text>
+              </View>
+            </TouchableOpacity>
           </Painel>
         </View>
       </View>

@@ -335,7 +335,7 @@ export const mapa = [
     { "tipo": "prateleira", "categoria": "Cuscuz e Milho", "idcorredor": 5, "id": 49 },
     { "tipo": "prateleira", "categoria": "sandálias", "idcorredor": 4, "id": 48 },
     { "tipo": "corredor", "id": 4 },
-    { "tipo": "prateleira", "categoria": "Talheres", "idcorredor": 4, "id": 47 },
+    { "tipo": "prateleira", "categoria": "Talheres", "idcorredor": 4, "id": 61 },
     { "tipo": "prateleira", "categoria": "Perfumaria", "idcorredor": 3, "id": 27 },
     { "tipo": "corredor", "id": 3 },
     { "tipo": "prateleira", "categoria": "Sabonete", "idcorredor": 3, "id": 43 },

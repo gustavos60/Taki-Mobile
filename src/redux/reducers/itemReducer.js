@@ -10,14 +10,14 @@ const initialState = {
       selected: false,
       confirmed: false
     },
-    {
+    /*{
       nome: 'Festa',
       id: 10,
       idImagem: 2,
       idCategoria: 1,
       selected: false,
       confirmed: false
-    },
+    },*/
     {
       nome: 'Chocolate',
       id: 11,
@@ -418,6 +418,14 @@ const initialState = {
       selected: false,
       confirmed: false
     },
+    {
+      nome: 'Talheres',
+      id: 61,
+      idImagem: 2,
+      idCategoria: 1,
+      selected: false,
+      confirmed: false
+    }
   ],
   totalSelected: 0
 }
