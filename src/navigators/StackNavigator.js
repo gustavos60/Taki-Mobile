@@ -8,7 +8,6 @@ const StackNavigator = createStackNavigator({
   Home: { screen: HomeScreen, navigationOptions: { header: null } },
   Store: { screen: TabNavigator, navigationOptions: { header: null } },
   Map: {screen: MapStackNavigator, navigationOptions: {header: null } },
-  Route: {screen: RouteScreen, navigationOptions: {header: null}}
 }, {
     headerMode: 'screen',
     initialRouteName: 'Home'
