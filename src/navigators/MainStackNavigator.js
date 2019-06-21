@@ -1,7 +1,6 @@
 import MainScreen from '../screens/MainScreen'
 import ListScreen from '../screens/ListScreen'
 import { createStackNavigator, createAppContainer } from 'react-navigation'
-import MapStackNavigator from './MapStackNavigator';
 import RouteScreen from '../screens/RouteScreen';
 import MapScreen from '../screens/MapScreen';
 import AisleScreen from '../screens/AisleScreen';
