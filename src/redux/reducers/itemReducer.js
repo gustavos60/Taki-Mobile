@@ -35,7 +35,6 @@ const initialState = {
       confirmed: false
     },
     {
-      // ok
       nome: 'Hortifruti',
       id: 15,
       idImagem: 2,
@@ -44,7 +43,6 @@ const initialState = {
       confirmed: false
     },
     {
-      // ok
       nome: 'Padaria',
       id: 16,
       idImagem: 2,
@@ -205,7 +203,6 @@ const initialState = {
       confirmed: false
     },
     {
-      // ok
       nome: 'Frigorífico',
       id: 40,
       idImagem: 2,
