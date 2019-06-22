@@ -347,16 +347,4 @@ export const mapa = [
     { "tipo": "prateleira", "categoria": "Ofertas", "idcorredor": 1, "id": 44 }
 
   ]
-
-  /*, [ //linha 17
-    { "tipo": "corredor", "id": 0 },
-    { "tipo": "corredor", "id": 0 },
-    { "tipo": "corredor", "id": 0 },
-    { "tipo": "corredor", "id": 0 },
-    { "tipo": "corredor", "id": 0 },
-    { "tipo": "corredor", "id": 0 },
-    { "tipo": "corredor", "id": 0 },
-    { "tipo": "offset" },
-    { "tipo": "entrada" }
-  ]*/
 ]
