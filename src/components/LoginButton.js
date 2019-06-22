@@ -47,27 +47,4 @@ const styles = StyleSheet.create({
   }
 })
 
-const gstyles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    width: '70%',
-    backgroundColor: '#dc4335',
-    height: 40,
-    alignItems: 'center',
-    justifyContent: 'space-around',
-    borderRadius: 50,
-    elevation: 1,
-    marginBottom: 10
-  },
-  icon: {
-    position: 'absolute',
-    left: '5%',
-  },
-  text: {
-    fontWeight: 'bold',
-    fontSize: 14,
-
-  }
-})
-
 

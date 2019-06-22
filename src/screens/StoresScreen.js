@@ -51,8 +51,7 @@ export default class HomeScreen extends Component {
                 <Text style={styles.storeLocation}>Olinda</Text>
               </View>
             </TouchableOpacity> 
-
-
+            
             <TouchableOpacity
               style={styles.store}
               onPress={() => this.props.navigation.navigate('Main')}
