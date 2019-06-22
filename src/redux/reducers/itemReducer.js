@@ -442,7 +442,8 @@ export const itemReducer = (state = initialState, action) => {
   switch (action.type) {
     case TOGGLE_SELECTED: {
       let id = action.itemId
-      let sum = (state.itens[id].selected) ? -1 : 1
+      let item = state.itens.find(obj => obj.id === id)
+      let sum = (item && item.selected) ? -1 : 1
       let itensArray = state.itens.map((item) => {
         if (item.id === id) {
           return {
