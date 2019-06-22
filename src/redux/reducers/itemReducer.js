@@ -10,14 +10,6 @@ const initialState = {
       selected: false,
       confirmed: false
     },
-    /*{
-      nome: 'Festa',
-      id: 10,
-      idImagem: 2,
-      idCategoria: 1,
-      selected: false,
-      confirmed: false
-    },*/
     {
       nome: 'Chocolate',
       id: 11,
@@ -46,7 +38,7 @@ const initialState = {
       nome: 'Ovos',
       id: 14,
       idImagem: 2,
-      idCategoria: 1,
+      idCategoria: 2,
       selected: false,
       confirmed: false
     },
@@ -54,7 +46,7 @@ const initialState = {
       nome: 'Hortifruti',
       id: 15,
       idImagem: 2,
-      idCategoria: 1,
+      idCategoria: 5,
       selected: false,
       confirmed: false
     },
@@ -70,7 +62,7 @@ const initialState = {
       nome: 'Leite e Achocolatado',
       id: 17,
       idImagem: 2,
-      idCategoria: 1,
+      idCategoria: 6,
       selected: false,
       confirmed: false
     },
@@ -86,7 +78,7 @@ const initialState = {
       nome: 'Frutas',
       id: 19,
       idImagem: 2,
-      idCategoria: 1,
+      idCategoria: 5,
       selected: false,
       confirmed: false
     },
@@ -131,18 +123,10 @@ const initialState = {
       confirmed: false
     },
     {
-      nome: 'Higiene',
-      id: 25,
-      idImagem: 2,
-      idCategoria: 1,
-      selected: false,
-      confirmed: false
-    },
-    {
       nome: 'Fraldas',
       id: 26,
       idImagem: 2,
-      idCategoria: 1,
+      idCategoria: 4,
       selected: false,
       confirmed: false
     },
@@ -158,7 +142,7 @@ const initialState = {
       nome: 'Verduras',
       id: 28,
       idImagem: 2,
-      idCategoria: 1,
+      idCategoria: 5,
       selected: false,
       confirmed: false
     },
@@ -166,7 +150,7 @@ const initialState = {
       nome: 'Limpeza',
       id: 29,
       idImagem: 2,
-      idCategoria: 1,
+      idCategoria: 3,
       selected: false,
       confirmed: false
     },
@@ -198,7 +182,7 @@ const initialState = {
       nome: 'Frango',
       id: 33,
       idImagem: 2,
-      idCategoria: 1,
+      idCategoria: 2,
       selected: false,
       confirmed: false
     },
@@ -206,7 +190,7 @@ const initialState = {
       nome: 'Carne',
       id: 34,
       idImagem: 2,
-      idCategoria: 1,
+      idCategoria: 2,
       selected: false,
       confirmed: false
     },
@@ -214,7 +198,7 @@ const initialState = {
       nome: 'Peixe',
       id: 35,
       idImagem: 2,
-      idCategoria: 1,
+      idCategoria: 2,
       selected: false,
       confirmed: false
     },
@@ -238,7 +222,7 @@ const initialState = {
       nome: 'Laticinios',
       id: 38,
       idImagem: 2,
-      idCategoria: 1,
+      idCategoria: 6,
       selected: false,
       confirmed: false
     },
@@ -254,7 +238,7 @@ const initialState = {
       nome: 'Frigorífico',
       id: 40,
       idImagem: 2,
-      idCategoria: 1,
+      idCategoria: 2,
       selected: false,
       confirmed: false
     },
@@ -270,7 +254,7 @@ const initialState = {
       nome: 'Escova de Dente',
       id: 42,
       idImagem: 2,
-      idCategoria: 1,
+      idCategoria: 4,
       selected: false,
       confirmed: false
     },
@@ -278,7 +262,7 @@ const initialState = {
       nome: 'Sabonete',
       id: 43,
       idImagem: 2,
-      idCategoria: 1,
+      idCategoria: 4,
       selected: false,
       confirmed: false
     },
@@ -342,7 +326,7 @@ const initialState = {
       nome: 'Margarinas e Manteigas',
       id: 51,
       idImagem: 2,
-      idCategoria: 1,
+      idCategoria: 6,
       selected: false,
       confirmed: false
     },
@@ -414,7 +398,7 @@ const initialState = {
       nome: 'Veneno',
       id: 60,
       idImagem: 2,
-      idCategoria: 1,
+      idCategoria: 3,
       selected: false,
       confirmed: false
     },
@@ -423,6 +407,30 @@ const initialState = {
       id: 61,
       idImagem: 2,
       idCategoria: 1,
+      selected: false,
+      confirmed: false
+    },
+    {
+      nome: 'Absorventes',
+      id: 62,
+      idImagem: 2,
+      idCategoria: 4,
+      selected: false,
+      confirmed: false
+    },
+    {
+      nome: 'Papel Higiênico',
+      id: 63,
+      idImagem: 2,
+      idCategoria: 4,
+      selected: false,
+      confirmed: false
+    },
+    {
+      nome: 'Higiene Bucal',
+      id: 64,
+      idImagem: 2,
+      idCategoria: 4,
       selected: false,
       confirmed: false
     }

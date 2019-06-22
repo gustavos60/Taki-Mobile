@@ -31,9 +31,17 @@ class MainScreen extends Component {
         <Divider />
         <View style={styles.categoriasContainer} >
           <ScrollView style={{ flex: 5 }} >
-            <Painel title='Escritorio' collapsed={false} children={<Categoria filtro={this.state.busca} id={1} />} />
+            <Painel title='Higiene Pessoal' collapsed={false} children={<Categoria filtro={this.state.busca} id={4} />} />
             <Divider />
-            <Painel title='Festas' collapsed={false} children={<Categoria filtro={this.state.busca} id={2} />} />
+            <Painel title='Carnes, Peixes e Ovos' collapsed={false} children={<Categoria filtro={this.state.busca} id={2} />} />
+            <Divider />
+            <Painel title='Frutas e Verduras' collapsed={false} children={<Categoria filtro={this.state.busca} id={5} />} />
+            <Divider />
+            <Painel title='Laticínios' collapsed={false} children={<Categoria filtro={this.state.busca} id={6} />} />
+            <Divider />
+            <Painel title='Limpeza' collapsed={false} children={<Categoria filtro={this.state.busca} id={3} />} />
+            <Divider />
+            <Painel title='Supermercado' collapsed={false} children={<Categoria filtro={this.state.busca} id={1} />} />
             <Divider />
           </ScrollView>
         </View>
