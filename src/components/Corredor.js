@@ -189,13 +189,29 @@ class Corredor extends Component {
             let width = item.total * fracao
             let height = 30
             let backgroundColor = '#FFF'
-            if (item.nome === 'Banheiro') backgroundColor = '#afeeee' 
             let itemRedux = this.props.itens.find(obj => obj.id === item.id)
             let selected = false
+
             if (itemRedux) selected = itemRedux.selected
+            
             let tag = <View style={{ height: 30 }} ></View>
             let borderWidth = (item.id === 0) ? 0 : 2
             let borderColor = (item.id === 0) ? "#FFF" : "#000"
+
+            if (item.nome === 'Banheiro') {
+              backgroundColor = '#afeeee' 
+              let indicadorColor = '#47B036'
+              let indicadorWidth = (width > 75) ? 75 : width
+
+              tag = (
+                <TouchableOpacity
+                  activeOpacity={0.7}
+                  style={[styles.indicador, { backgroundColor: indicadorColor, width: indicadorWidth, height: 30}]}>
+                  <Text style={{ textAlign: 'center', color: '#FFFFFF' }} numberOfLines={1} >{item.nome}</Text>
+                </TouchableOpacity>
+              )
+            }
+
             if (selected) {
               backgroundColor = '#FFA451'
               let indicadorColor = (itemRedux && itemRedux.confirmed) ? '#47B036' : '#909090'
