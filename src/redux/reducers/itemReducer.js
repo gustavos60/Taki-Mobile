@@ -11,14 +11,6 @@ const initialState = {
       confirmed: false
     },
     {
-      nome: 'Chocolate',
-      id: 11,
-      idImagem: 2,
-      idCategoria: 1,
-      selected: false,
-      confirmed: false
-    },
-    {
       nome: 'Biscoito',
       id: 12,
       idImagem: 2,
@@ -43,6 +35,7 @@ const initialState = {
       confirmed: false
     },
     {
+      // ok
       nome: 'Hortifruti',
       id: 15,
       idImagem: 2,
@@ -51,6 +44,7 @@ const initialState = {
       confirmed: false
     },
     {
+      // ok
       nome: 'Padaria',
       id: 16,
       idImagem: 2,
@@ -79,22 +73,6 @@ const initialState = {
       id: 19,
       idImagem: 2,
       idCategoria: 5,
-      selected: false,
-      confirmed: false
-    },
-    {
-      nome: 'Oleo',
-      id: 20,
-      idImagem: 2,
-      idCategoria: 1,
-      selected: false,
-      confirmed: false
-    },
-    {
-      nome: 'Azeite',
-      id: 21,
-      idImagem: 2,
-      idCategoria: 1,
       selected: false,
       confirmed: false
     },
@@ -151,14 +129,6 @@ const initialState = {
       id: 29,
       idImagem: 2,
       idCategoria: 3,
-      selected: false,
-      confirmed: false
-    },
-    {
-      nome: 'Bazar',
-      id: 30,
-      idImagem: 2,
-      idCategoria: 1,
       selected: false,
       confirmed: false
     },
@@ -235,26 +205,11 @@ const initialState = {
       confirmed: false
     },
     {
+      // ok
       nome: 'Frigorífico',
       id: 40,
       idImagem: 2,
       idCategoria: 2,
-      selected: false,
-      confirmed: false
-    },
-    {
-      nome: 'Embutidos',
-      id: 41,
-      idImagem: 2,
-      idCategoria: 1,
-      selected: false,
-      confirmed: false
-    },
-    {
-      nome: 'Escova de Dente',
-      id: 42,
-      idImagem: 2,
-      idCategoria: 4,
       selected: false,
       confirmed: false
     },
