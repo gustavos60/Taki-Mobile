@@ -15,17 +15,21 @@ export default class HomeScreen extends Component {
         </View>
         <Divider />
         <View style={styles.storesContainer} >
-          <Painel title='Atacadão' collapsed = {false} >
-            <TouchableOpacity
+
+          
+        <Painel title='Supermercados' collapsed = {false} >
+          <TouchableOpacity
               style={styles.store}
-              onPress={() => this.props.navigation.navigate('Main')}
-            >
+              onPress={() => this.props.navigation.navigate('Main')}>
               <Image style={styles.image} resizeMode='center' source={require('../../assets/images/arcomix.png')} />
               <View style={{flexDirection:'column'}}>
                 <Text style={styles.storeText}>Arco Mix</Text>
                 <Text style={styles.storeLocation}>Várzea</Text>
               </View>
             </TouchableOpacity>
+          </Painel>
+
+          <Painel title='Atacarejos' collapsed = {false} >
             <TouchableOpacity
               style={styles.store}
               onPress={() => this.props.navigation.navigate('Main')}
@@ -33,9 +37,22 @@ export default class HomeScreen extends Component {
               <Image style={styles.image} resizeMode='center' source={require('../../assets/images/atacadao1.png')} />
               <View style={{flexDirection:'column'}}>
                 <Text style={styles.storeText}>Atacadão</Text>
-                <Text style={styles.storeLocation}>Boa Viagem</Text>
+                <Text style={styles.storeLocation}>Camaragibe</Text>
               </View>
-            </TouchableOpacity>            
+            </TouchableOpacity> 
+
+            <TouchableOpacity
+              style={styles.store}
+              onPress={() => this.props.navigation.navigate('Main')}
+            >
+              <Image style={styles.image} resizeMode='center' source={require('../../assets/images/atacadao1.png')} />
+              <View style={{flexDirection:'column'}}>
+                <Text style={styles.storeText}>Atacadão</Text>
+                <Text style={styles.storeLocation}>Olinda</Text>
+              </View>
+            </TouchableOpacity> 
+
+
             <TouchableOpacity
               style={styles.store}
               onPress={() => this.props.navigation.navigate('Main')}
