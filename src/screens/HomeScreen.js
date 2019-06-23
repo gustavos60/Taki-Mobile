@@ -44,6 +44,12 @@ class HomeScreen extends Component {
           color='#3270f0'
           onPress={() => this.signIn()} 
         />
+        <LoginButton 
+          style ={styles.icon} text="Continuar sem fazer login" 
+          iconName='google'
+          color='#3270f0'
+          onPress={() => this.props.navigation.navigate('Store')} 
+        />
       </LinearGradient>
     )
   }
