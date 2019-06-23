@@ -151,6 +151,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-google-signin')
     implementation project(':react-native-vector-icons')
     implementation project(':react-native-linear-gradient')
     implementation project(':react-native-gesture-handler')
@@ -165,3 +166,5 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+
+apply plugin: 'com.google.gms.google-services'
