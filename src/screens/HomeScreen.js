@@ -5,6 +5,7 @@ import LoginButton from '../components/LoginButton'
 import { GoogleSignin, statusCodes } from 'react-native-google-signin'
 import { connect } from 'react-redux'
 import { addUser } from '../redux/actions/userActions'
+import { addToken } from '../api/api'
 
 class HomeScreen extends Component {
 
@@ -17,8 +18,8 @@ class HomeScreen extends Component {
       })
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn()
-      console.log(userInfo)
       this.props.addUser(userInfo)
+      addToken(userInfo.idToken)
       this.props.navigation.navigate('Store')
     } catch (error) {
       Alert.alert('Erro de autenticação', JSON.stringify(error))
