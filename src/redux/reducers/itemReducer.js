@@ -3,96 +3,8 @@ import { TOGGLE_SELECTED, TOGGLE_CONFIRMATION } from '../actions/actionTypes'
 const initialState = {
   itens: [
     {
-      nome: 'Pratos',
-      id: 0,
-      idImagem: 0,
-      idCategoria: 2,
-      selected: false,
-      confirmed: false
-    },
-    {
-      nome: 'Copos',
-      id: 1,
-      idImagem: 5,
-      idCategoria: 2,
-      selected: false,
-      confirmed: false
-    },
-    {
-      nome: 'Balões',
-      id: 2,
-      idImagem: 6,
-      idCategoria: 2,
-      selected: false,
-      confirmed: false
-    },
-    {
-      nome: 'Decoração',
-      id: 3,
-      idImagem: 7,
-      idCategoria: 2,
-      selected: false,
-      confirmed: false
-    },
-    {
-      nome: 'Grampos',
-      id: 4,
-      idImagem: 4,
-      idCategoria: 1,
-      selected: false,
-      confirmed: false
-    },
-    {
-      nome: 'Post-it',
-      id: 5,
-      idImagem: 1,
-      idCategoria: 1,
-      selected: false,
-      confirmed: false
-    },
-    {
-      nome: 'Pastas',
-      id: 6,
-      idImagem: 3,
-      idCategoria: 1,
-      selected: false,
-      confirmed: false
-    },
-    {
-      nome: 'Papel',
-      id: 7,
-      idImagem: 2,
-      idCategoria: 1,
-      selected: false,
-      confirmed: false
-    },
-    {
-      nome: 'Promocionais',
-      id: 8,
-      idImagem: 2,
-      idCategoria: 1,
-      selected: false,
-      confirmed: false
-    },
-    {
       nome: 'Descartáveis',
       id: 9,
-      idImagem: 2,
-      idCategoria: 1,
-      selected: false,
-      confirmed: false
-    },
-    {
-      nome: 'Festa',
-      id: 10,
-      idImagem: 2,
-      idCategoria: 1,
-      selected: false,
-      confirmed: false
-    },
-    {
-      nome: 'Chocolate',
-      id: 11,
       idImagem: 2,
       idCategoria: 1,
       selected: false,
@@ -118,7 +30,7 @@ const initialState = {
       nome: 'Ovos',
       id: 14,
       idImagem: 2,
-      idCategoria: 1,
+      idCategoria: 2,
       selected: false,
       confirmed: false
     },
@@ -126,7 +38,7 @@ const initialState = {
       nome: 'Hortifruti',
       id: 15,
       idImagem: 2,
-      idCategoria: 1,
+      idCategoria: 5,
       selected: false,
       confirmed: false
     },
@@ -142,7 +54,7 @@ const initialState = {
       nome: 'Leite e Achocolatado',
       id: 17,
       idImagem: 2,
-      idCategoria: 1,
+      idCategoria: 6,
       selected: false,
       confirmed: false
     },
@@ -158,23 +70,7 @@ const initialState = {
       nome: 'Frutas',
       id: 19,
       idImagem: 2,
-      idCategoria: 1,
-      selected: false,
-      confirmed: false
-    },
-    {
-      nome: 'Oleo',
-      id: 20,
-      idImagem: 2,
-      idCategoria: 1,
-      selected: false,
-      confirmed: false
-    },
-    {
-      nome: 'Azeite',
-      id: 21,
-      idImagem: 2,
-      idCategoria: 1,
+      idCategoria: 5,
       selected: false,
       confirmed: false
     },
@@ -203,18 +99,10 @@ const initialState = {
       confirmed: false
     },
     {
-      nome: 'Higiene',
-      id: 25,
-      idImagem: 2,
-      idCategoria: 1,
-      selected: false,
-      confirmed: false
-    },
-    {
       nome: 'Fraldas',
       id: 26,
       idImagem: 2,
-      idCategoria: 1,
+      idCategoria: 4,
       selected: false,
       confirmed: false
     },
@@ -230,7 +118,7 @@ const initialState = {
       nome: 'Verduras',
       id: 28,
       idImagem: 2,
-      idCategoria: 1,
+      idCategoria: 5,
       selected: false,
       confirmed: false
     },
@@ -238,15 +126,7 @@ const initialState = {
       nome: 'Limpeza',
       id: 29,
       idImagem: 2,
-      idCategoria: 1,
-      selected: false,
-      confirmed: false
-    },
-    {
-      nome: 'Bazar',
-      id: 30,
-      idImagem: 2,
-      idCategoria: 1,
+      idCategoria: 3,
       selected: false,
       confirmed: false
     },
@@ -270,7 +150,7 @@ const initialState = {
       nome: 'Frango',
       id: 33,
       idImagem: 2,
-      idCategoria: 1,
+      idCategoria: 2,
       selected: false,
       confirmed: false
     },
@@ -278,7 +158,7 @@ const initialState = {
       nome: 'Carne',
       id: 34,
       idImagem: 2,
-      idCategoria: 1,
+      idCategoria: 2,
       selected: false,
       confirmed: false
     },
@@ -286,7 +166,7 @@ const initialState = {
       nome: 'Peixe',
       id: 35,
       idImagem: 2,
-      idCategoria: 1,
+      idCategoria: 2,
       selected: false,
       confirmed: false
     },
@@ -310,7 +190,7 @@ const initialState = {
       nome: 'Laticinios',
       id: 38,
       idImagem: 2,
-      idCategoria: 1,
+      idCategoria: 6,
       selected: false,
       confirmed: false
     },
@@ -326,23 +206,7 @@ const initialState = {
       nome: 'Frigorífico',
       id: 40,
       idImagem: 2,
-      idCategoria: 1,
-      selected: false,
-      confirmed: false
-    },
-    {
-      nome: 'Embutidos',
-      id: 41,
-      idImagem: 2,
-      idCategoria: 1,
-      selected: false,
-      confirmed: false
-    },
-    {
-      nome: 'Escova de Dente',
-      id: 42,
-      idImagem: 2,
-      idCategoria: 1,
+      idCategoria: 2,
       selected: false,
       confirmed: false
     },
@@ -350,7 +214,7 @@ const initialState = {
       nome: 'Sabonete',
       id: 43,
       idImagem: 2,
-      idCategoria: 1,
+      idCategoria: 4,
       selected: false,
       confirmed: false
     },
@@ -414,7 +278,7 @@ const initialState = {
       nome: 'Margarinas e Manteigas',
       id: 51,
       idImagem: 2,
-      idCategoria: 1,
+      idCategoria: 6,
       selected: false,
       confirmed: false
     },
@@ -486,10 +350,42 @@ const initialState = {
       nome: 'Veneno',
       id: 60,
       idImagem: 2,
+      idCategoria: 3,
+      selected: false,
+      confirmed: false
+    },
+    {
+      nome: 'Talheres',
+      id: 61,
+      idImagem: 2,
       idCategoria: 1,
       selected: false,
       confirmed: false
     },
+    {
+      nome: 'Absorventes',
+      id: 62,
+      idImagem: 2,
+      idCategoria: 4,
+      selected: false,
+      confirmed: false
+    },
+    {
+      nome: 'Papel Higiênico',
+      id: 63,
+      idImagem: 2,
+      idCategoria: 4,
+      selected: false,
+      confirmed: false
+    },
+    {
+      nome: 'Higiene Bucal',
+      id: 64,
+      idImagem: 2,
+      idCategoria: 4,
+      selected: false,
+      confirmed: false
+    }
   ],
   totalSelected: 0
 }
@@ -498,7 +394,8 @@ export const itemReducer = (state = initialState, action) => {
   switch (action.type) {
     case TOGGLE_SELECTED: {
       let id = action.itemId
-      let sum = (state.itens[id].selected) ? -1 : 1
+      let item = state.itens.find(obj => obj.id === id)
+      let sum = (item && item.selected) ? -1 : 1
       let itensArray = state.itens.map((item) => {
         if (item.id === id) {
           return {

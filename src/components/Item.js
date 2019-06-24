@@ -23,13 +23,14 @@ class Item extends Component {
     let image = this.state.images[id]
 
     let backgroundColor = 'white'
-    if (this.props.itens[this.props.id].selected) backgroundColor = '#FFC2D8'
+    let item = this.props.itens.find(obj => obj.id === this.props.id)
+    if (item && item.selected) backgroundColor = '#FFC2D8'
     let boxStyle = StyleSheet.flatten([styles.box, { backgroundColor: backgroundColor }])
 
     return (
       <TouchableOpacity style={boxStyle} onPress={() => this.click()}  >
         <Image style={styles.image} resizeMode='center' source={image} />
-        <Text>{this.props.text}</Text>
+        <Text style={{textAlign: 'center'}} >{this.props.text}</Text>
       </TouchableOpacity>
     )
   }

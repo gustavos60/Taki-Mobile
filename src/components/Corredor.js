@@ -16,7 +16,9 @@ class Corredor extends Component {
       totalDireita: 0,
       corredor: [],
       height: 0,
-      color: ''
+      width: 0,
+      color: '',
+      corredorVertical: true,
     }
   }
 
@@ -52,16 +54,41 @@ class Corredor extends Component {
     let corredor = []
     let ladoDireito = []
     let ladoEsquerdo = []
+    let corredorVertical = true
 
+    // Filtra apenas os corredores com o id passado
     corredor = this._filtraMapa()
 
+    // Define os lados esquerdo e direito
     corredor.forEach((linha) => {
-      if (linha[0]) ladoEsquerdo.push(linha[0])
-      if (linha[2]) ladoDireito.push(linha[2])
+      if (linha.length <= 3) {
+        // Adiciona prateleira vazia caso não haja nada em um dos lados do corredor
+        if (linha.length === 2) {
+          let elem = {
+            tipo: 'prateleira',
+            categoria: 'vazio',
+            id: 0
+          }
+          if (linha[0].tipo === 'corredor') linha.splice(0, 0, elem)
+          else linha.splice(2, 0, elem)
+        }
+        if (linha[0]) ladoEsquerdo.push(linha[0])
+        if (linha[2]) ladoDireito.push(linha[2])
+      } else {
+        if (corredorVertical) {
+          corredorVertical = false
+          ladoEsquerdo = linha
+        } else {
+          ladoDireito = linha
+        }
+      }
     })
+
+    // Retorna objeto com os cada item e o total de prateleiras que ele ocupa
     ladoEsquerdo = this._contaUnicos(ladoEsquerdo)
     ladoDireito = this._contaUnicos(ladoDireito)
 
+    // Total de prateleiras de cada lado
     let totalEsquerda = 0
     let totalDireita = 0
     ladoEsquerdo.forEach((item) => {
@@ -77,7 +104,8 @@ class Corredor extends Component {
       ladoEsquerdo,
       totalEsquerda,
       totalDireita,
-      color: corredorColors[this.props.id % 4]
+      color: corredorColors[this.props.id % 4],
+      corredorVertical
     })
   }
 
@@ -108,19 +136,22 @@ class Corredor extends Component {
           renderItem={({ item }) => {
             let height = item.total * fracao
             let backgroundColor = '#FFFFFF'
-            let selected = this.props.itens[item.id].selected
-            let nome = ''
+            let itemRedux = this.props.itens.find(obj => obj.id === item.id)
+            let selected = false
+            if (itemRedux) selected = itemRedux.selected
             let tag = <View></View>
+            let borderWidth = (item.id === 0) ? 0 : 2
+            let borderColor = (item.id === 0) ? "#FFF" : "#000"
             if (selected) {
               backgroundColor = '#FFA451'
-              let indicadorColor = (this.props.itens[item.id].confirmed) ? '#47B036' : '#909090'
-              nome = item.nome
+              let indicadorColor = (itemRedux && itemRedux.confirmed) ? '#47B036' : '#909090'
+              let indicadorHeight = (height > 40) ? 40 : height
               tag = (
                 <TouchableOpacity
                   activeOpacity={0.7}
-                  style={[styles.indicador, { backgroundColor: indicadorColor }]}
+                  style={[styles.indicador, { backgroundColor: indicadorColor, height: indicadorHeight }]}
                   onPress={() => this.props.toggleConfirmation(item.id)} >
-                  <Text style={{ textAlign: 'center', color: '#FFFFFF' }} numberOfLines={2} >{nome}</Text>
+                  <Text style={{ textAlign: 'center', color: '#FFFFFF' }} numberOfLines={1} >{item.nome}</Text>
                 </TouchableOpacity>
               )
             }
@@ -128,13 +159,13 @@ class Corredor extends Component {
               return (
                 <View style={[styles.lado, { height }]} >
                   {tag}
-                  <View style={[styles.prateleira, { backgroundColor }]} />
+                  <View style={[styles.prateleira, { backgroundColor, borderWidth, borderColor }]} />
                 </View>
               )
             } else {
               return (
                 <View style={[styles.lado, { height }]} >
-                  <View style={[styles.prateleira, { backgroundColor }]} />
+                  <View style={[styles.prateleira, { backgroundColor, borderWidth, borderColor }]} />
                   {tag}
                 </View>
               )
@@ -145,19 +176,106 @@ class Corredor extends Component {
     )
   }
 
-  render() {
+  _renderHorizontal = () => {
+    let fracao = (this.state.width) / this.state.totalEsquerda
+    return (
+      <View style={{ height: 90, margin: 0, marginTop: 100 }} >
+        <FlatList
+          horizontal={true}
+          data={this.state.ladoEsquerdo}
+          extraData={[this.props.itens, this.state.width]}
+          keyExtractor={(item, index) => '' + index}
+          renderItem={({ item }) => {
+            let width = item.total * fracao
+            let height = 30
+            let backgroundColor = '#FFF'
+            let itemRedux = this.props.itens.find(obj => obj.id === item.id)
+            let selected = false
+
+            if (itemRedux) selected = itemRedux.selected
+            
+            let tag = <View style={{ height: 30 }} ></View>
+            let borderWidth = (item.id === 0) ? 0 : 2
+            let borderColor = (item.id === 0) ? "#FFF" : "#000"
+
+            if (item.nome === 'Banheiro') {
+              backgroundColor = '#afeeee' 
+              let indicadorColor = '#47B036'
+              let indicadorWidth = (width > 75) ? 75 : width
+
+              tag = (
+                <TouchableOpacity
+                  activeOpacity={0.7}
+                  style={[styles.indicador, { backgroundColor: indicadorColor, width: indicadorWidth, height: 30}]}>
+                  <Text style={{ textAlign: 'center', color: '#FFFFFF' }} numberOfLines={1} >{item.nome}</Text>
+                </TouchableOpacity>
+              )
+            }
+
+            if (selected) {
+              backgroundColor = '#FFA451'
+              let indicadorColor = (itemRedux && itemRedux.confirmed) ? '#47B036' : '#909090'
+              let indicadorWidth = (width > 75) ? 75 : width
+              tag = (
+                <TouchableOpacity
+                  activeOpacity={0.7}
+                  style={[styles.indicador, { backgroundColor: indicadorColor, width: indicadorWidth, height: 30}]}
+                  onPress={() => { this.props.toggleConfirmation(item.id) }} >
+                  <Text style={{ textAlign: 'center', color: '#FFFFFF' }} numberOfLines={1} >{item.nome}</Text>
+                </TouchableOpacity>
+              )
+            }
+            return (
+              <View style={{ alignItems: 'center' }} >
+                {tag}
+                <View style={[styles.prateleira, { width, height, backgroundColor, borderWidth, borderColor }]} />
+              </View>
+            )
+          }}
+        />
+      </View>
+    )
+  }
+
+  _renderCorredor = () => {
     let fracaoDireita = this.state.height / this.state.totalDireita
     let fracaoEsquerda = this.state.height / this.state.totalEsquerda
-    return (
-      <View style={styles.divider} onLayout={(event) => {
-        let { height } = event.nativeEvent.layout
-        this.setState({ height })
-      }}>
-        {this._renderLado('esquerdo', fracaoEsquerda)}
-        <View style={styles.meio}>
-          {this._renderNumeroCorredor()}
+
+    // Corredor vertical
+    if (this.state.corredorVertical) {
+      return (
+        <View style={styles.horizontalDivider} onLayout={(event) => {
+          let { width, height } = event.nativeEvent.layout
+          this.setState({ width, height })
+        }}>
+          {this._renderLado('esquerdo', fracaoEsquerda)}
+          <View style={styles.numeroVertical}>
+            {this._renderNumeroCorredor()}
+          </View>
+          {this._renderLado('direito', fracaoDireita)}
         </View>
-        {this._renderLado('direito', fracaoDireita)}
+      )
+    } 
+    // Corredor Horizontal
+    else {
+      return (
+        <View style={styles.verticalDivider} onLayout={(event) => {
+          let { width, height } = event.nativeEvent.layout
+          this.setState({ width, height })
+        }}>
+          {this._renderHorizontal()}
+          <View style={styles.numeroHorizontal}>
+            {this._renderNumeroCorredor()}
+          </View>
+        </View>
+      )
+    }
+  }
+
+  render() {
+    return (
+      <View>
+        {this._renderCorredor()}
       </View>
     )
   }
@@ -176,16 +294,27 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(mapStateToProps, mapDispatchToProps)(Corredor)
 
 const styles = StyleSheet.create({
-  divider: {
+  horizontalDivider: {
     height: '100%',
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
-  meio: {
+  verticalDivider: {
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  numeroVertical: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  numeroHorizontal: {
+    flex: 1,
+    width: '100%',
+    alignItems: 'center',
   },
   esquerda: {
     flex: 3,
@@ -196,8 +325,6 @@ const styles = StyleSheet.create({
   prateleira: {
     width: '20%',
     height: '100%',
-    borderWidth: 2,
-    borderColor: '#000000'
   },
   lado: {
     flexDirection: 'row',
@@ -207,8 +334,7 @@ const styles = StyleSheet.create({
   },
   indicador: {
     borderRadius: 20,
-    height: 40,
-    width: 75,
+    width: 85,
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: '2%',
