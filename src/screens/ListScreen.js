@@ -50,6 +50,7 @@ class ListScreen extends Component {
           />
           <TouchableOpacity
             onPress={() =>this._findItem(item.id)}
+            style={styles.touchableItem}
           >
             <View style={styles.itemClick}>
               <Image style={styles.image} resizeMode='center' source={images[item.idImagem]} />
@@ -57,7 +58,11 @@ class ListScreen extends Component {
             </View>
           </TouchableOpacity>
           <View style={styles.trashCan}>
-            <Icon style={{marginRight: '8%'}} name='trash-can-outline' size={30} onPress={() => this._removeItem(item.id)} />
+            <Icon 
+              name='trash-can-outline' 
+              size={30} 
+              onPress={() => this._removeItem(item.id)} 
+            />
           </View>
           
         </View>
@@ -167,7 +172,13 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   trashCan: {
-    flex: 1,
-    flexDirection: 'row-reverse'
+    flexDirection: 'row-reverse',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '75%',
+    flex: 1
+  },
+  touchableItem: {
+    flex: 6
   }
 })
