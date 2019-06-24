@@ -12,7 +12,8 @@ const MainStackNavigator = createStackNavigator({
   Route: {screen: RouteScreen, navigationOptions: { header: null }},
   Aisle: {screen: AisleScreen, navigationOptions: { header: null }}
 }, {
-    headerMode: 'screen'
+    headerMode: 'screen',
+    initialRouteName: 'Main'
   })
 
 export default createAppContainer(MainStackNavigator)
