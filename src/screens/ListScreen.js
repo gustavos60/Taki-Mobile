@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, Image, FlatList, Text } from 'react-native'
+import { View, StyleSheet, Image, FlatList, Text, TouchableOpacity } from 'react-native'
 import { CheckBox } from 'react-native-elements'
 import { connect } from 'react-redux'
 import { toggleSelected, toggleConfirmation } from '../redux/actions/itemActions'
 import { images } from '../images'
+import { mapa } from '../mapa'
 import LoginButton from '../components/LoginButton'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
@@ -47,9 +48,18 @@ class ListScreen extends Component {
             uncheckedIcon='circle-o'
             size={30}
           />
-          <Image style={styles.image} resizeMode='center' source={images[item.idImagem]} />
-          <Text style={styles.text} >{item.nome}</Text>
-          <Icon style={{ marginRight: 10 }} name='trash-can-outline' size={30} onPress={() => this._removeItem(item.id)} />
+          <TouchableOpacity
+            onPress={() =>this._findItem(item.id)}
+          >
+            <View style={styles.itemClick}>
+              <Image style={styles.image} resizeMode='center' source={images[item.idImagem]} />
+              <Text style={styles.text} >{item.nome}</Text>
+            </View>
+          </TouchableOpacity>
+          <View style={styles.trashCan}>
+            <Icon style={{marginRight: '8%'}} name='trash-can-outline' size={30} onPress={() => this._removeItem(item.id)} />
+          </View>
+          
         </View>
         <View style={{ width: '100%', height: 1, backgroundColor: '#c3c3c3' }} ></View>
       </View>
@@ -67,6 +77,19 @@ class ListScreen extends Component {
         this.props.toggleConfirmation(id)
       }
     });
+  }
+
+  _findItem = (id) => {
+    mapa.forEach((linha) => {
+      linha.forEach((item) => {
+        if (item.id === id && item.idcorredor > 0) {
+          let corredor = item.idcorredor          
+          this.props.navigation.navigate('Aisle', {
+            corredor: corredor
+          })
+        }
+      })
+    })
   }
 
   _renderList() {
@@ -128,6 +151,10 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 80
   },
+  itemClick: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   image: {
     height: 60,
     width: 60,
@@ -136,8 +163,11 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   text: {
-    flex: 1,
     fontSize: 16,
     marginLeft: 10,
+  },
+  trashCan: {
+    flex: 1,
+    flexDirection: 'row-reverse'
   }
 })
