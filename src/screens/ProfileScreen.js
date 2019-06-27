@@ -1,31 +1,28 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
+import { connect } from 'react-redux'
 import Divider from '../components/Divider'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import { userReducer } from '../redux/reducers/userReducer'
 
-export default class ProfileScreen extends Component {
+
+class ProfileScreen extends Component {
     render () {
         return (
             <View style = {styles.container}>
+                <Text style = {styles.userText}>{'\nConta'}</Text>
                 
-                <Text style = {styles.userText}>
-                    <Icon style={[styles.icon, { color: 'white' }]} size={25} name={'chevron-left'}/> {'\n Editar Conta'}</Text>
-                
-                <TouchableOpacity
-                    style={styles.store}
-                    onPress={() => this.props.navigation.navigate('Main')}>
-                    <Image style={styles.circle} resizeMode='center' source={require('../../assets/images/lucas.png')} />
+                <TouchableOpacity style={styles.store}>
+                    <Image style={styles.circle} resizeMode='contain' source = {{uri: this.props.foto}} />
                 </TouchableOpacity>
 
                 <View style={styles.userContainer} >
-                    <Text style = {[{color: 'black'}, {fontSize: 16} ]}>Nome</Text>
-                    <Text style = {[{color: 'black'}, {fontSize: 24} ]}>{'Lucas \n'}</Text>
-                    <Text style = {[{color: 'black'}, {fontSize: 16} ]}>Sobrenome</Text>
-                    <Text style = {[{color: 'black'}, {fontSize: 24} ]}>{'Silva \n'}</Text>
-                    <Text style = {[{color: 'black'}, {fontSize: 16} ]}>Telefone</Text>
-                    <Text style = {[{color: 'black'}, {fontSize: 24} ]}>{'81 99425-3486 \n'}</Text>
-                    <Text style = {[{color: 'black'}, {fontSize: 16} ]}>Email</Text>
-                    <Text style = {[{color: 'black'}, {fontSize: 24} ]}>{'lucassilva21@gmail.com \n'}</Text>
+                    <Text style = {[{color: 'black'}, {fontSize: 16} ]}>Nome:</Text>
+                    <Text style=  {[{color: 'black'}, {fontSize: 24} ]} >{this.props.nome + '\n'}</Text>
+                    <Text style = {[{color: 'black'}, {fontSize: 16} ]}>Sobrenome:</Text>
+                    <Text style=  {[{color: 'black'}, {fontSize: 24} ]} >{this.props.sobrenome + '\n'}</Text>
+                    <Text style = {[{color: 'black'}, {fontSize: 16} ]}>Email:</Text>
+                    <Text style=  {[{color: 'black'}, {fontSize: 24} ]} >{this.props.email + '\n'}</Text>
                 </View>
                 <Divider />
             </View>
@@ -33,6 +30,16 @@ export default class ProfileScreen extends Component {
         )
     }
 }
+
+const mapStateToProps = (store) => ({
+    nome  : store.userState.user.givenName,
+    sobrenome: store.userState.user.familyName,
+    email : store.userState.user.email,
+    foto : store.userState.user.photo
+})
+
+export default connect(mapStateToProps, null)(ProfileScreen)
+
 
 const styles = StyleSheet.create({
     container: {
@@ -52,6 +59,8 @@ const styles = StyleSheet.create({
     userText: {
         color: 'white',
         justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
         flexDirection: 'row',
         backgroundColor: '#ffa451',
         width: '100%',
@@ -60,25 +69,13 @@ const styles = StyleSheet.create({
     },
     icon: {
         position: 'absolute',
-        left: '5%',
+        left: '50%'
       }, 
       circle: {
-        width: 100,
-        height: 100,
-        borderRadius: 100/2,
+        width: 150,
+        height: 150,
+        borderRadius: 150/2,
         //backgroundColor: '#ffa451',
         marginTop: '10%'
-    },
-    profileImgContainer: {
-        marginLeft: 8,
-        height: 82,
-        width: 82,
-        borderRadius: 40,
-        borderWidth: 1
-  },
-    profileImg: {
-        height: 80,
-        width: 80,
-        borderRadius: 40,
-  },  
+    },  
   })
