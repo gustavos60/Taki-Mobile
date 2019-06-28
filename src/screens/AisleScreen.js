@@ -228,7 +228,7 @@ const styles = StyleSheet.create({
     image: {
         flex: 3,
         margin: 10,
-        width: '90%'
+        width: '100%'
     },
     indicator: {
         width: '100%',
