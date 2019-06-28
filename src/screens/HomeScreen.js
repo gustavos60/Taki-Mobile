@@ -12,7 +12,6 @@ class HomeScreen extends Component {
   signIn = async () => {
     try {
       await GoogleSignin.configure({
-        scopes: ['https://www.googleapis.com/auth/drive.readonly'], 
         webClientId: '206610878188-2urtn9te6pua4h1r7sgtbd220rtfk43e.apps.googleusercontent.com',  
         forceConsentPrompt: true, 
       })
