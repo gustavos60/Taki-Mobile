@@ -76,7 +76,7 @@ class MapScreen extends Component {
         <Entrance />
         <TouchableOpacity
           style={styles.indicator}
-          onPress={() => this.props.navigation.navigate('List')}
+          onPress={() => this.props.navigation.push('List')}
           activeOpacity={0.7}
         >
           <Text style={{ textAlign: 'center' }} >{this.props.total} itens selecionados. </Text>

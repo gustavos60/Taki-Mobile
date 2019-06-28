@@ -8,7 +8,6 @@ import {
   Animated,
   Dimensions
 } from 'react-native';
-
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import SearchBar from '../components/SearchBar';
 import Corredor from '../components/Corredor';
@@ -266,8 +265,4 @@ const styles = StyleSheet.create({
   aisle: {
     flex: 1,
   },
-})
-
-const aisleStyle = StyleSheet.create({
-
 })

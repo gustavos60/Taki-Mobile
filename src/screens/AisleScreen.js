@@ -1,28 +1,196 @@
 import React, {Component} from 'react'
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native'
+import {
+    View,
+    Text,
+    StyleSheet,
+    TouchableOpacity,
+    PanResponder,
+    Animated,
+    Dimensions
+  } from 'react-native';
 import { connect } from 'react-redux'
 import Corredor from '../components/Corredor'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import SearchBar from '../components/SearchBar'
 import Entrance from '../components/Entrance'
 import MapAndRoute from '../components/MapAndRoute';
+import { mapa } from '../mapa'
 
+const SCREEN_WIDTH = Dimensions.get('window').width
+const SWIPE_THRESHOLD = SCREEN_WIDTH * 0.3
 
 class AisleScreen extends Component {
+    constructor(props) {
+        super(props);
+    
+        const position = new Animated.ValueXY()
+    
+        const panResponder = PanResponder.create({
+          onStartShouldSetPanResponder: () => true,
+          onPanResponderMove: (event, gesture) => {
+            position.setValue({ x: gesture.dx, y: 0 })
+          },
+          onPanResponderRelease: (event, gesture) => {
+            if (gesture.dx > SWIPE_THRESHOLD) {
+              this.forceSwipe('right')
+            } else if (gesture.dx < -SWIPE_THRESHOLD) {
+              this.forceSwipe('left')
+            } else {
+              this.resetPosition()
+            }
+          }
+        })
+    
+        this.state = {
+          position,
+					panResponder,
+					corredores: [],
+					actualAisle: null
+        };
+		}
+		
+		componentDidMount() {
+			const corredor = this.props.navigation.getParam('corredor', 'NO-ID')
+			this.setState({actualAisle: corredor})
+
+			let corredores = []
+			let itens = this.props.itens
+			mapa.forEach(linha => {
+				linha.forEach(item => {
+					if (item.tipo === 'prateleira') {
+						let filtro = itens.filter(dado => dado.id === item.id)
+						if (filtro.length > 0) {
+							let corredor = item.idcorredor
+							if (!corredores.includes(corredor)) corredores.push(corredor)
+						}
+					}
+				})
+			})
+			corredores.sort()
+			this.setState({ corredores: corredores })
+		}
+
+    resetPosition() {
+        const { position } = this.state
+        Animated.spring(position, {
+          toValue: { x: 0, y: 0 }
+        }).start()
+      }
+    
+      forceSwipe(direction) {
+        const x = (direction === 'right') ? SCREEN_WIDTH : -SCREEN_WIDTH
+        const { position } = this.state
+        Animated.timing(position, {
+          toValue: { x, y: 0 },
+          duration: 100
+        }).start(() => this.handleSwipe(direction))
+      }
+    
+      handleSwipe(direction) {
+        let arraySize = this.state.corredores.length
+        const { position } = this.state
+        if (direction === 'left' && this.state.actualAisle > 0) {
+          this.setState({actualAisle: this.state.actualAisle - 1})
+          position.setValue({ x: SCREEN_WIDTH, y: 0 })
+          Animated.spring(position, {
+            toValue: { x: 0, y: 0 }
+          }).start()
+        } else if (direction === 'right' && arraySize > 1 && this.state.actualAisle < arraySize - 1) {
+          this.setState({actualAisle: this.state.actualAisle + 1})
+          position.setValue({ x: -SCREEN_WIDTH, y: 0 })
+          Animated.spring(position, {
+            toValue: { x: 0, y: 0 }
+          }).start()
+        } else {
+          this.resetPosition()
+        }
+      }
+    
+      _renderLeftArrow = () => {
+        if (this.state.actualAisle > 0) {
+          return (
+            <View>
+              <TouchableOpacity onPress={() => this.forceSwipe('left')}>
+                <Icon
+                  name='chevron-left'
+                  size={50}
+                  color='#DA6711'
+                />
+              </TouchableOpacity>
+            </View>
+          )
+        } else {
+          return (
+            <View>
+              <Icon
+                name='chevron-left'
+                size={50}
+                color='lightgrey'
+              />
+            </View>
+          )
+        }
+    
+      }
+    
+      _renderRightArrow = () => {
+        let arraySize = this.state.corredores.length
+    
+        if (arraySize > 1 && this.state.actualAisle < arraySize - 1) {
+          return (
+            <View>
+              <TouchableOpacity onPress={() => this.forceSwipe('right')}>
+                <Icon
+                  name='chevron-right'
+                  size={50}
+                  color='#DA6711'
+                />
+              </TouchableOpacity>
+            </View>
+          )
+        } else {
+          return (
+            <View>
+              <Icon
+                name='chevron-right'
+                size={50}
+                color='lightgrey'
+              />
+            </View>
+          )
+        }
+      }
+    
+      _renderAisle = () => {
+				return (
+					<View style={styles.aisleAndArrows}>
+						{this._renderLeftArrow()}
+						<Animated.View
+							style={[styles.aisle, this.state.position.getLayout()]}
+							{...this.state.panResponder.panHandlers}
+						>
+							<Corredor id={this.state.corredores[this.state.actualAisle]} />
+						</Animated.View>
+						{this._renderRightArrow()}
+					</View>
+				)
+      }
+    
+
     render() {
-        const corredor = this.props.navigation.getParam('corredor', 'NO-ID')
         return (
             <View style={styles.container}>
                 <View style={styles.searchContainer} >
                     <SearchBar placeholder='Busque um produto...' />
                     <MapAndRoute 
                         store='Arco Mix'
-                        subtitle= {'Corredor ' + corredor}
+                        subtitle= {'Corredor ' + this.state.corredores[this.state.actualAisle]}
                         onMapPress={() => this.props.navigation.navigate('Map')}
                         onRoutePress={() => this.props.navigation.navigate('Route')}
                     />
                 </View>
                 <View style={styles.image}>
-                    <Corredor id={corredor}/>
+									{this._renderAisle()}
                 </View>
                 <Entrance />
                 <TouchableOpacity
@@ -76,5 +244,23 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 15,
         marginTop: 10
-      }
+		},
+		emptyList: {
+			alignItems: 'center'
+		},
+		emptyListText: {
+			fontSize: 16,
+			color: '#FFA451',
+			fontWeight: 'bold',
+			textAlign: 'center',
+			width: '80%',
+		},
+		aisleAndArrows: {
+			flex: 1,
+			flexDirection: 'row',
+			alignItems: 'center',
+		},
+		aisle: {
+			flex: 1,
+		},	
 })
