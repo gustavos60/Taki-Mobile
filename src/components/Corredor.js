@@ -177,7 +177,7 @@ class Corredor extends Component {
   }
 
   _renderHorizontal = () => {
-    let fracao = (this.state.width) / this.state.totalEsquerda
+    let fracao = (this.state.width * .9) / this.state.totalEsquerda
     return (
       <View style={{ height: 90, margin: 0, marginTop: 100 }} >
         <FlatList
@@ -201,7 +201,7 @@ class Corredor extends Component {
             if (item.nome === 'Banheiro') {
               backgroundColor = '#afeeee' 
               let indicadorColor = '#47B036'
-              let indicadorWidth = (width > 75) ? 75 : width
+              let indicadorWidth = (width > 60) ? 60 : width
 
               tag = (
                 <TouchableOpacity
@@ -215,7 +215,7 @@ class Corredor extends Component {
             if (selected) {
               backgroundColor = '#FFA451'
               let indicadorColor = (itemRedux && itemRedux.confirmed) ? '#47B036' : '#909090'
-              let indicadorWidth = (width > 75) ? 75 : width
+              let indicadorWidth = (width > 60) ? 60 : width
               tag = (
                 <TouchableOpacity
                   activeOpacity={0.7}
