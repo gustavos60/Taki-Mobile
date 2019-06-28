@@ -143,7 +143,7 @@ class RouteScreen extends Component {
   }
 
   _renderAisle = () => {
-    if (this.state.aisleArray == null) {
+    if (this.state.aisleArray.length < 1) {
       return (
         <View style={styles.emptyList}>
           <Text style={styles.emptyListText}> Você não possui itens na sua lista. Adicione itens na sua lista clicando no carrinho.</Text>

@@ -75,8 +75,8 @@ export const mapa = [
     { "tipo": "prateleira", "categoria": "Carnes", "idcorredor": 6, "id": 34 },
     { "tipo": "corredor", "id": 6 },
     { "tipo": "prateleira", "categoria": "Bebidas", "idcorredor": 6, "id": 13 },
-    { "tipo": "prateleira", "categoria": "", "idcorredor": -1, "id": 0 },
-    { "tipo": "prateleira", "categoria": "", "idcorredor": -1, "id": 0 },
+    { "tipo": "prateleira", "categoria": "", "id": 0 },
+    { "tipo": "prateleira", "categoria": "", "id": 0 },
     { "tipo": "prateleira", "categoria": "Carnes", "idcorredor": 5, "id": 34 },
     { "tipo": "corredor", "id": 5 },
     { "tipo": "corredor", "id": 4 },
@@ -97,8 +97,8 @@ export const mapa = [
     { "tipo": "prateleira", "categoria": "Carnes", "idcorredor": 6, "id": 34 },
     { "tipo": "corredor", "id": 6, "num": true },
     { "tipo": "prateleira", "categoria": "Embutidos", "idcorredor": 6, "id": 32 },
-    { "tipo": "prateleira", "categoria": "", "idcorredor": -1, "id": 0 },
-    { "tipo": "prateleira", "categoria": "", "idcorredor": -1, "id": 0 },
+    { "tipo": "prateleira", "categoria": "", "id": 0 },
+    { "tipo": "prateleira", "categoria": "", "id": 0 },
     { "tipo": "prateleira", "categoria": "Laticínios", "idcorredor": 5, "id": 38 },
     { "tipo": "corredor", "id": 5, "num": true },
     { "tipo": "corredor", "id": 4, "num": true },
@@ -136,7 +136,7 @@ export const mapa = [
 
   , [ //linha 7 -> Tamanho de 34
 
-    { "tipo": "prateleira", "categoria": "Frios", "idcorredor": -1, "id": 39 },
+    { "tipo": "prateleira", "categoria": "Frios", "idcorredor": 6, "id": 39 },
     { "tipo": "corredor", "id": 0 },
     { "tipo": "corredor", "id": 0 },
     { "tipo": "corredor", "id": 0 },
@@ -146,7 +146,7 @@ export const mapa = [
     { "tipo": "corredor", "id": 0 },
     { "tipo": "corredor", "id": 0 },
     { "tipo": 'offset' },
-    { "tipo": "prateleira", "categoria": "Bebidas", "idcorredor": -1, "id": 13 }
+    { "tipo": "prateleira", "categoria": "Bebidas", "idcorredor": 1, "id": 13 }
 
   ]
 
