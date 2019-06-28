@@ -166,6 +166,16 @@ class RouteScreen extends Component {
     }
   }
 
+  _renderEntrance = () => {
+    if (this.state.aisleArray.length > 0) {
+      return (
+        <View>
+          <Entrance />
+        </View>
+      )
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -173,7 +183,7 @@ class RouteScreen extends Component {
           <SearchBar placeholder='Busque um produto...' />
           <MapAndRoute
             store='Arco Mix'
-            subtitle={'Corredor ' + this.props.rotaArray[this.props.indAtual]}
+            subtitle={this.props.rotaArray.length > 0 ? 'Corredor ' + this.props.rotaArray[this.props.indAtual] : ""}
             onMapPress={() => this.props.navigation.navigate('Map')}
             onRoutePress={() => this.props.navigation.navigate('Route')}
           />
@@ -181,7 +191,7 @@ class RouteScreen extends Component {
         <View style={styles.image}>
           {this._renderAisle()}
         </View>
-        <Entrance />
+        {this._renderEntrance()}
         <TouchableOpacity
           style={styles.indicator}
           onPress={() => this.props.navigation.navigate('List')}
