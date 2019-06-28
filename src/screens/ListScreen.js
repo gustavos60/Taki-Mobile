@@ -34,6 +34,7 @@ class ListScreen extends Component {
   }
 
   _renderItem(item) {
+    let image = images.find(obj => obj.id === item.id)
     return (
       <View>
         <View style={styles.item} >
@@ -53,7 +54,7 @@ class ListScreen extends Component {
             style={styles.touchableItem}
           >
             <View style={styles.itemClick}>
-              <Image style={styles.image} resizeMode='center' source={images[item.idImagem]} />
+              <Image style={styles.image} resizeMode='center' source={image.image} />
               <Text style={styles.text} >{item.nome}</Text>
             </View>
           </TouchableOpacity>

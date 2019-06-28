@@ -23,10 +23,7 @@ class Item extends Component {
   }
 
   render() {
-
-    let id = this.props.imageId ? this.props.imageId : 0
-    let image = this.state.images[id]
-
+    let image = this.state.images.find(obj => obj.id === this.props.id)
     let backgroundColor = 'white'
     let item = this.props.itens.find(obj => obj.id === this.props.id)
     if (item && item.selected) backgroundColor = '#FFC2D8'
@@ -34,7 +31,7 @@ class Item extends Component {
 
     return (
       <TouchableOpacity style={boxStyle} onPress={() => this.click()}  >
-        <Image style={styles.image} resizeMode='center' source={image} />
+        <Image style={styles.image} resizeMode='center' source={image.image} />
         <Text style={{textAlign: 'center'}} >{this.props.text}</Text>
       </TouchableOpacity>
     )
