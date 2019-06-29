@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native'
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 import SearchBar from '../components/SearchBar'
 import Map from '../components/Map'
 import { connect } from 'react-redux'
 import { atualizaRota } from '../redux/actions/rotaActions'
 import { mapa } from '../mapa'
 import Entrance from '../components/Entrance'
-import MapAndRoute from '../components/MapAndRoute';
+import MapAndRoute from '../components/MapAndRoute'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 
 class MapScreen extends Component {
@@ -73,7 +74,20 @@ class MapScreen extends Component {
         <View style={styles.image}>
           {this._renderMap()}
         </View>
-        <Entrance />
+        <View>
+          <TouchableOpacity
+            style={styles.finishButton}
+            activeOpacity={0.7}
+          >
+            <Icon
+              name='check'
+              size={20}
+              style={{ color: 'white', marginLeft: 10, marginRight: 10 }}
+            />
+            <Text style={{color: 'white', fontWeight: 'bold'}} >Finalizar compras</Text>
+          </TouchableOpacity>
+          <Entrance />
+        </View>
         <TouchableOpacity
           style={styles.indicator}
           onPress={() => this.props.navigation.push('List')}
@@ -170,5 +184,17 @@ const styles = StyleSheet.create({
     height: 50,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  finishButton: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    width: 175,
+    height: 40,
+    borderRadius: 25,
+    backgroundColor: '#47B036',
+    position: 'absolute',
+    alignSelf: 'center',
+    top: '1%',
+    elevation: 2,
   },
 })
