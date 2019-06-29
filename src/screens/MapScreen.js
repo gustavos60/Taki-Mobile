@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native'
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 import SearchBar from '../components/SearchBar'
 import Map from '../components/Map'
 import { connect } from 'react-redux'
 import { atualizaRota } from '../redux/actions/rotaActions'
+import { resetBooleans } from '../redux/actions/itemActions'
 import { mapa } from '../mapa'
 import Entrance from '../components/Entrance'
-import MapAndRoute from '../components/MapAndRoute';
+import MapAndRoute from '../components/MapAndRoute'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import { Overlay } from 'react-native-elements'
 
 
 class MapScreen extends Component {
@@ -14,7 +17,8 @@ class MapScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      corredores: []
+      corredores: [],
+      visible: false
     }
   }
 
@@ -34,6 +38,10 @@ class MapScreen extends Component {
     })
     this.props.atualizaRota(corredores.filter(item => item > 0).sort())
     this.setState({ corredores })
+  }
+
+  componentWillUnmount() {
+    this.setState({ visible: false })
   }
 
   _renderMap = () => {
@@ -73,7 +81,27 @@ class MapScreen extends Component {
         <View style={styles.image}>
           {this._renderMap()}
         </View>
-        <Entrance />
+        <View>
+          <TouchableOpacity
+            style={styles.finishButton}
+            activeOpacity={0.7}
+            onPress={() => {
+              this.setState({ visible: true })
+              setTimeout(() => {
+                this.props.navigation.navigate('Home')
+                this.props.resetBooleans()
+              }, 2000)
+            }}
+          >
+            <Icon
+              name='check'
+              size={20}
+              style={{ color: 'white', marginLeft: 10, marginRight: 10 }}
+            />
+            <Text style={{ color: 'white', fontWeight: 'bold' }} >Finalizar compras</Text>
+          </TouchableOpacity>
+          <Entrance />
+        </View>
         <TouchableOpacity
           style={styles.indicator}
           onPress={() => this.props.navigation.push('List')}
@@ -81,6 +109,28 @@ class MapScreen extends Component {
         >
           <Text style={{ textAlign: 'center' }} >{this.props.total} itens selecionados. </Text>
         </TouchableOpacity>
+        <Overlay
+          width='auto'
+          height='auto'
+          isVisible={this.state.visible}
+          overlayBackgroundColor='transparent'
+          overlayStyle={{alignItems: 'center', justifyContent: 'center', backgroundColor: 'white', borderRadius: 10}}
+          onBackdropPress={() => this.setState({ isVisible: false })}
+        >
+          <View style={{alignItems: 'center', justifyContent: 'center'}}>
+            <View>
+              <View style={{ marginTop: 20 ,width: 80, height: 80, borderRadius: 40, backgroundColor: '#47B036', alignItems: 'center', justifyContent: 'center'}} >
+                <Icon
+                  name='thumb-up'
+                  size={60}
+                  color='white' />
+              </View>
+            </View>
+            <View style={{width: 150, height: 75, alignItems: 'center', justifyContent: 'center'}} >
+              <Text style={{textAlign: 'center', fontWeight: 'bold'}} >Obrigado por usar o taki!</Text>
+            </View>
+          </View>
+        </Overlay>
       </View>
     )
   }
@@ -93,7 +143,8 @@ const mapStateToProps = (store) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    atualizaRota: (array) => dispatch(atualizaRota(array))
+    atualizaRota: (array) => dispatch(atualizaRota(array)),
+    resetBooleans: () => dispatch(resetBooleans())
   }
 }
 
@@ -170,5 +221,17 @@ const styles = StyleSheet.create({
     height: 50,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  finishButton: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    width: 175,
+    height: 40,
+    borderRadius: 25,
+    backgroundColor: '#47B036',
+    position: 'absolute',
+    alignSelf: 'center',
+    top: '1%',
+    elevation: 2,
   },
 })
