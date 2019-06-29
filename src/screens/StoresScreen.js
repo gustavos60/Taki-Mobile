@@ -1,11 +1,21 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Image, TouchableOpacity, Text } from 'react-native'
+import { StyleSheet, View, Image, TouchableOpacity, Text, ToastAndroid } from 'react-native'
 import SearchBar from '../components/SearchBar'
 import Divider from '../components/Divider'
 import Painel from '../components/Painel'
 
 
 export default class HomeScreen extends Component {
+
+  
+  _toastWithDurationGravityHandler=()=>{
+    //function to make Toast With Duration And Gravity
+   ToastAndroid.showWithGravity(
+      'Em breve disponível!',
+      ToastAndroid.LONG, //can be SHORT, LONG
+      ToastAndroid.CENTER //can be TOP, BOTTON, CENTER
+    );
+  }
 
   render() {
     return (
@@ -31,8 +41,8 @@ export default class HomeScreen extends Component {
 
           <Painel title='Atacarejos' collapsed = {false} >
             <TouchableOpacity
-              style={styles.store}
-              onPress={() => this.props.navigation.navigate('Main')}
+              style={styles.store1}
+              onPress={this._toastWithDurationGravityHandler}
             >
               <Image style={styles.image} resizeMode='center' source={require('../../assets/images/atacadao1.png')} />
               <View style={{flexDirection:'column'}}>
@@ -42,8 +52,8 @@ export default class HomeScreen extends Component {
             </TouchableOpacity> 
 
             <TouchableOpacity
-              style={styles.store}
-              onPress={() => this.props.navigation.navigate('Main')}
+              style={styles.store1}
+              onPress={this._toastWithDurationGravityHandler}
             >
               <Image style={styles.image} resizeMode='center' source={require('../../assets/images/atacadao1.png')} />
               <View style={{flexDirection:'column'}}>
@@ -53,8 +63,8 @@ export default class HomeScreen extends Component {
             </TouchableOpacity> 
             
             <TouchableOpacity
-              style={styles.store}
-              onPress={() => this.props.navigation.navigate('Main')}
+              style={styles.store1}
+              onPress={this._toastWithDurationGravityHandler}
             >
               <Image style={styles.image} resizeMode='center' source={require('../../assets/images/atacadao.png')} />
               <View style={{flexDirection:'column'}}>
@@ -96,6 +106,19 @@ const styles = StyleSheet.create({
     elevation: 1,
     marginTop: 10,
     borderRadius: 10,
+  },
+  store1: {
+    justifyContent: 'flex-start',
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '90%',
+    height: 70,
+    borderWidth: 0.7,
+    borderColor: 'grey',
+    elevation: 1,
+    marginTop: 10,
+    borderRadius: 10,
+    backgroundColor: 'grey'
   },
   storeText: {
     fontSize: 16,
