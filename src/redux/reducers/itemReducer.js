@@ -1,4 +1,4 @@
-import { TOGGLE_SELECTED, TOGGLE_CONFIRMATION } from '../actions/actionTypes'
+import { TOGGLE_SELECTED, TOGGLE_CONFIRMATION, RESET_BOOLEANS } from '../actions/actionTypes'
 
 const initialState = {
   itens: [
@@ -422,6 +422,19 @@ export const itemReducer = (state = initialState, action) => {
       return {
         ...state,
         itens: itensArray
+      }
+    }
+    case RESET_BOOLEANS: {
+      let itens = state.itens.map(item => {
+        return {
+          ...item,
+          selected: false,
+          confirmed: false
+        }
+      })
+      return {
+        itens,
+        totalSelected: 0
       }
     }
     default:

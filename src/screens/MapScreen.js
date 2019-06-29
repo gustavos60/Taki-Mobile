@@ -4,6 +4,7 @@ import SearchBar from '../components/SearchBar'
 import Map from '../components/Map'
 import { connect } from 'react-redux'
 import { atualizaRota } from '../redux/actions/rotaActions'
+import { resetBooleans } from '../redux/actions/itemActions'
 import { mapa } from '../mapa'
 import Entrance from '../components/Entrance'
 import MapAndRoute from '../components/MapAndRoute'
@@ -86,7 +87,10 @@ class MapScreen extends Component {
             activeOpacity={0.7}
             onPress={() => {
               this.setState({ visible: true })
-              setTimeout(() => this.props.navigation.navigate('Home'), 2000)
+              setTimeout(() => {
+                this.props.navigation.navigate('Home')
+                this.props.resetBooleans()
+              }, 2000)
             }}
           >
             <Icon
@@ -139,7 +143,8 @@ const mapStateToProps = (store) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    atualizaRota: (array) => dispatch(atualizaRota(array))
+    atualizaRota: (array) => dispatch(atualizaRota(array)),
+    resetBooleans: () => dispatch(resetBooleans())
   }
 }
 
