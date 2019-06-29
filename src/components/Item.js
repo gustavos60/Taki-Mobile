@@ -31,7 +31,7 @@ class Item extends Component {
 
     return (
       <TouchableOpacity style={boxStyle} onPress={() => this.click()}  >
-        <Image style={styles.image} resizeMode='center' source={image.image} />
+        <Image style={styles.image} resizeMode='contain' source={image.image} />
         <Text style={{textAlign: 'center'}} >{this.props.text}</Text>
       </TouchableOpacity>
     )
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     elevation: 6
   },
   image: {
-    height: 40,
-    width: 40,
+    height: 60,
+    width: 60,
   }
 })
