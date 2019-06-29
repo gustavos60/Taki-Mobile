@@ -8,6 +8,7 @@ import { mapa } from '../mapa'
 import Entrance from '../components/Entrance'
 import MapAndRoute from '../components/MapAndRoute'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import { Overlay } from 'react-native-elements'
 
 
 class MapScreen extends Component {
@@ -15,7 +16,8 @@ class MapScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      corredores: []
+      corredores: [],
+      visible: false
     }
   }
 
@@ -35,6 +37,10 @@ class MapScreen extends Component {
     })
     this.props.atualizaRota(corredores.filter(item => item > 0).sort())
     this.setState({ corredores })
+  }
+
+  componentWillUnmount() {
+    this.setState({ visible: false })
   }
 
   _renderMap = () => {
@@ -78,13 +84,17 @@ class MapScreen extends Component {
           <TouchableOpacity
             style={styles.finishButton}
             activeOpacity={0.7}
+            onPress={() => {
+              this.setState({ visible: true })
+              setTimeout(() => this.props.navigation.navigate('Home'), 2000)
+            }}
           >
             <Icon
               name='check'
               size={20}
               style={{ color: 'white', marginLeft: 10, marginRight: 10 }}
             />
-            <Text style={{color: 'white', fontWeight: 'bold'}} >Finalizar compras</Text>
+            <Text style={{ color: 'white', fontWeight: 'bold' }} >Finalizar compras</Text>
           </TouchableOpacity>
           <Entrance />
         </View>
@@ -95,6 +105,28 @@ class MapScreen extends Component {
         >
           <Text style={{ textAlign: 'center' }} >{this.props.total} itens selecionados. </Text>
         </TouchableOpacity>
+        <Overlay
+          width='auto'
+          height='auto'
+          isVisible={this.state.visible}
+          overlayBackgroundColor='transparent'
+          overlayStyle={{alignItems: 'center', justifyContent: 'center', backgroundColor: 'white', borderRadius: 10}}
+          onBackdropPress={() => this.setState({ isVisible: false })}
+        >
+          <View style={{alignItems: 'center', justifyContent: 'center'}}>
+            <View>
+              <View style={{ marginTop: 20 ,width: 80, height: 80, borderRadius: 40, backgroundColor: '#47B036', alignItems: 'center', justifyContent: 'center'}} >
+                <Icon
+                  name='thumb-up'
+                  size={60}
+                  color='white' />
+              </View>
+            </View>
+            <View style={{width: 150, height: 75, alignItems: 'center', justifyContent: 'center'}} >
+              <Text style={{textAlign: 'center', fontWeight: 'bold'}} >Obrigado por usar o taki!</Text>
+            </View>
+          </View>
+        </Overlay>
       </View>
     )
   }
