@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     elevation: 1,
     marginTop: 10,
     borderRadius: 10,
-    backgroundColor: 'grey'
+    backgroundColor: '#c7c1c1'
   },
   storeText: {
     fontSize: 16,
