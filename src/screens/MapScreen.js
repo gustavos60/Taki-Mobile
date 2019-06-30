@@ -49,7 +49,7 @@ class MapScreen extends Component {
       <Map
         corredores={this.state.corredores}
         atualizaCorredor={(id) => this.props.navigation.navigate('Aisle', {
-          corredor: id
+          corredor: id-1
         })} />
     )
   }
