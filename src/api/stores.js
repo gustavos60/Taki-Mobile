@@ -19,3 +19,13 @@ export const getStoreProducts = async (id) => {
     return null
   }
 }
+
+export const getStoreMap = async (id) => {
+  try{
+    const resp = await api.get(`/store/${id}/map`)
+    return resp
+  } catch (error){
+    console.log(error)
+    return null
+  }
+}
