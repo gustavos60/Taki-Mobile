@@ -6,8 +6,16 @@ import { GoogleSignin, statusCodes } from 'react-native-google-signin'
 import { connect } from 'react-redux'
 import { addUser } from '../redux/actions/userActions'
 import { addToken } from '../api/api'
+import { getStoreProducts } from '../api/stores'
+import {atualizaItens} from '../redux/actions/itemActions'
+
 
 class HomeScreen extends Component {
+
+  componentDidMount = async () => {
+    let products = await getStoreProducts(1)
+    this.props.atualizaItens(products)
+  }
 
   signIn = async () => {
     try {
@@ -57,7 +65,8 @@ class HomeScreen extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addUser: (user) => dispatch(addUser(user))
+    addUser: (user) => dispatch(addUser(user)),
+    atualizaItens: (itens) => dispatch(atualizaItens(itens))
   }
 }
 

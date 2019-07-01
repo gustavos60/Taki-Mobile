@@ -20,8 +20,9 @@ export const resetBooleans = () => {
   }
 }
 
-export const atualizaItens = () => {
+export const atualizaItens = (itens) => {
   return {
-    type: ATUALIZA_ITENS
+    type: ATUALIZA_ITENS,
+    itens
   }
 }
