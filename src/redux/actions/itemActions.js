@@ -1,4 +1,4 @@
-import { TOGGLE_SELECTED, TOGGLE_CONFIRMATION, RESET_BOOLEANS } from "./actionTypes"
+import { TOGGLE_SELECTED, TOGGLE_CONFIRMATION, RESET_BOOLEANS, ATUALIZA_ITENS } from "./actionTypes"
 
 export const toggleSelected = (itemIndex) => {
   return {
@@ -17,5 +17,11 @@ export const toggleConfirmation = (itemIndex) => {
 export const resetBooleans = () => {
   return {
     type: RESET_BOOLEANS
+  }
+}
+
+export const atualizaItens = () => {
+  return {
+    type: ATUALIZA_ITENS
   }
 }
