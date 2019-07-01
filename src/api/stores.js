@@ -23,7 +23,7 @@ export const getStoreProducts = async (id) => {
 export const getStoreMap = async (id) => {
   try{
     const resp = await api.get(`/store/${id}/map`)
-    return resp
+    return JSON.parse(resp.data)
   } catch (error){
     console.log(error)
     return null

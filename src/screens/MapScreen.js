@@ -5,11 +5,11 @@ import Map from '../components/Map'
 import { connect } from 'react-redux'
 import { atualizaRota } from '../redux/actions/rotaActions'
 import { resetBooleans } from '../redux/actions/itemActions'
-import { mapa } from '../mapa'
 import Entrance from '../components/Entrance'
 import MapAndRoute from '../components/MapAndRoute'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { Overlay } from 'react-native-elements'
+import {getStoreMap} from '../api/stores'
 
 
 class MapScreen extends Component {
@@ -22,9 +22,15 @@ class MapScreen extends Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount = async () => {
     let corredores = []
     let itens = this.props.itens.filter(item => item.selected)
+    const mapa = await getStoreMap(1).then((resp) => {
+      return resp
+    }).catch((error) => {
+      console.log(error)
+    })
+    
     mapa.forEach(linha => {
       linha.forEach(item => {
         if (item.tipo === 'prateleira') {
@@ -32,10 +38,12 @@ class MapScreen extends Component {
           if (filtro.length > 0) {
             let corredor = item.idcorredor
             if (!corredores.includes(corredor)) corredores.push(corredor)
+            
           }
         }
       })
-    })
+    })  
+
     this.props.atualizaRota(corredores.filter(item => item > 0).sort())
     this.setState({ corredores })
   }
